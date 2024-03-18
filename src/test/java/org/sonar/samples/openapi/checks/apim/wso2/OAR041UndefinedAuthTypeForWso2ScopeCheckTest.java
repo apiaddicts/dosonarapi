@@ -6,6 +6,8 @@ import org.sonar.api.rule.Severity;
 import org.sonar.api.rules.RuleType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.apim.wso2.OAR041UndefinedAuthTypeForWso2ScopeCheck;
+
 public class OAR041UndefinedAuthTypeForWso2ScopeCheckTest extends BaseCheckTest {
 
     @Before

@@ -1,0 +1,13 @@
+{
+    "title": "OAR082 - BinaryOrByte - The string properties of the specified parameters must define a byte or binary format.",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

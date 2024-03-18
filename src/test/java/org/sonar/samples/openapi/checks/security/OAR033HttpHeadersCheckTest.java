@@ -7,6 +7,8 @@ import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RuleParamType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.security.OAR033HttpHeadersCheck;
+
 public class OAR033HttpHeadersCheckTest extends BaseCheckTest {
 
     @Before
@@ -49,7 +51,7 @@ public class OAR033HttpHeadersCheckTest extends BaseCheckTest {
 
     @Override
     public void verifyRule() {
-        assertRuleProperties("OAR033 - HttpHeaders - There are mandatory request headers and others that are not allowed", RuleType.VULNERABILITY, Severity.CRITICAL, tags("vulnerability"));
+        assertRuleProperties("OAR033 - HttpHeaders - There are mandatory request headers and others that are not allowed", RuleType.VULNERABILITY, Severity.CRITICAL, tags("safety"));
     }
 
     @Override

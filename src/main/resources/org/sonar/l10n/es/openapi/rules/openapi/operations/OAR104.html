@@ -1,0 +1,94 @@
+<p>in the verb Post, some path structures are not encouraged. This can be a hint of a design flaw.</p>
+<h2>Allowed paths</h2>
+<table>
+  <thead>
+    <tr>
+      <th>VERB</th>
+      <th>STRUCTURE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>POST</td>
+        <td>/resources</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/resources/get</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/resources/delete</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/resources/{id}/subresources</td>
+      </tr>
+  </tbody>
+</table>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /resources/{r_id}:
+    post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR104: Operation not recommended for resource path: resources/{r_id}}}</span>
+      parameters:
+        - name: r_id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      title: Swagger Petstore
+      version: 1.0.0
+    paths:
+        /resources/{r_id}/other:
+            post:
+                parameters:
+                    - name: r_id
+                    in: path
+                    required: true
+                    type: string
+                responses:
+                    200:
+                    description: Ok
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /resources/me: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR104: Operation not recommended for resource path: resources/me}}</span>
+    post:
+      responses:
+        '200':
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+servers:
+- url: /
+paths:
+    /resources/{r_id}/other:
+        post:
+            responses:
+                '200':
+                description: Ok
+</pre>

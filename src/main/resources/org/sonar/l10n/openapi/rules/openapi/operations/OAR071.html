@@ -1,0 +1,145 @@
+<p>Query parameters in GET operations must be defined according to the standard</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<h3>In case param1, param2 and param3 are mandatory</h3>
+<pre>
+  swagger: '2.0'
+  info:
+    version: 1.0.0
+    title: My API
+  paths:
+    /examples:
+      get:
+        summary: Get a list of items
+        parameters: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR071: Query parameters param2 must be defined}}</span>
+          - name: param1
+            in: query
+            type: string
+          - name: param3
+            in: query
+            type: boolean
+          - name: param4
+            in: query
+            type: string
+          - name: param5
+            in: query
+            type: number
+        responses:
+          200:
+            description: A list of items
+            schema:
+              type: array
+              items:
+                type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    version: 1.0.0
+    title: My API
+  paths:
+    /examples:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: query
+            type: string
+          - name: param2
+            in: query
+            type: integer
+          - name: param3
+            in: query
+            type: boolean
+          - name: param4
+            in: query
+            type: string
+          - name: param5
+            in: query
+            type: number
+        responses:
+          200:
+            description: A list of items
+            schema:
+              type: array
+              items:
+                type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: My API
+  paths:
+    /examples:
+      get:
+        summary: Get a list of items
+        parameters: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR071: Query parameters param3 must be defined}}</span>
+          - name: param1
+            in: query
+            schema:
+              type: string
+          - name: param2
+            in: query
+            schema:
+              type: integer
+          - name: param4
+            in: query
+            schema:
+              type: string
+          - name: param5
+            in: query
+            schema:
+              type: number
+        responses:
+          200:
+            description: A list of items
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: My API
+  paths:
+    /examples:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: query
+            schema:
+              type: string
+          - name: param2
+            in: query
+            schema:
+              type: integer
+          - name: param3
+            in: query
+            schema:
+              type: boolean
+          - name: param4
+            in: query
+            schema:
+              type: string
+          - name: param5
+            in: query
+            schema:
+              type: number
+        responses:
+          200:
+            description: A list of items
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string
+</pre>

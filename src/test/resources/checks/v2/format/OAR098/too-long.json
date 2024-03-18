@@ -1,0 +1,9 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "basePath": "/api-seguros/v1/vida", # Noncompliant {{OAR098: Path has to many parts}}
+  "paths" : { }
+}

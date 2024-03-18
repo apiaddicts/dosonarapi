@@ -1,29 +1,7 @@
 <p>Al definir una API se deben definir cuáles son los formatos de entrada de datos.</p>
-<p>Para <b>OpenAPI 2</b> especificar al menos un tipo MIME comprendido por la API en la palabra clave "consumes" es obligatorio.</p>
-<p>Para <b>OpenAPI 3</b> especificar al menos un tipo de medio en el contenido del cuerpo de la solicitud es obligatorio.</p>
+<p>Para <b>OpenAPI 2</b> especificar al menos un tipo MIME comprendido por la API en la palabra clave "consumes" es obligatorio</p>
+<p>Para <b>OpenAPI 3</b> especificar al menos un tipo de medio en el contenido del cuerpo de la solicitud es obligatorio</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -37,31 +15,6 @@ paths:
           description: OK
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "consumes": [
-        "application/json"
-    ], 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -77,31 +30,6 @@ paths:
           description: OK
 </pre>
 <p>Or</p>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "put": {
-                "consumes": [
-                    "application/json"
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -117,28 +45,6 @@ paths:
           description: OK
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:
@@ -152,39 +58,6 @@ paths:
           description: Ok
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "requestBody": {
-                    "description": "Optional description in *Markdown*", 
-                    "required": true, 
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object"
-                            }
-                        }
-                    }
-                }, 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:

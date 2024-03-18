@@ -1,0 +1,111 @@
+<p>Response codes in PATCH operations must be defined according to the standard</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /status:
+      patch:
+        summary: Get API status
+        responses:
+          400:
+            description: error
+    /another:
+      patch:
+        summary: Get another API status
+        responses:
+          400:
+            description: error
+    /users:
+      patch:
+        summary: Get all users
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR064: Response code 200, 202, 204, 206 must be defined}}</span>
+          400:
+            description: Error
+         
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /status:
+      patch:
+        summary: Get API status
+        responses:
+          200:
+            description: OK
+          202:
+            description: Accepted
+          206:
+            description: Partial Content
+    /users:
+      patch:
+        summary: Get all users
+        responses:
+          200:
+            description: OK
+          202:
+            description: Accepted
+          206:
+            description: Partial Content
+  
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /status:
+      patch:
+        summary: Get API status
+        responses:
+          400:
+            description: error
+    /another:
+      patch:
+        summary: Get another API status
+        responses:
+          400:
+            description: error
+    /users:
+      patch:
+        summary: Get all users
+        responses:  <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR064: Response code 200, 202, 204, 206 must be defined}}</span>
+          400:
+            description: Error 
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /status:
+      patch:
+        summary: Get API status
+        responses:
+          200:
+            description: OK
+          202:
+            description: Accepted
+          206:
+            description: Partial Content
+    /users:
+      patch:
+        summary: Get all users
+        responses:
+          200:
+            description: OK
+          202:
+            description: Accepted
+          206:
+            description: Partial Content  
+</pre>

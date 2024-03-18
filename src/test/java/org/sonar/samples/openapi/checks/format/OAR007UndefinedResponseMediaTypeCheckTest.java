@@ -6,6 +6,8 @@ import org.sonar.api.rule.Severity;
 import org.sonar.api.rules.RuleType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.format.OAR007UndefinedResponseMediaTypeCheck;
+
 public class OAR007UndefinedResponseMediaTypeCheckTest extends BaseCheckTest {
 
     @Before

@@ -1,0 +1,141 @@
+<p>Una propiedad de tipo número con formato no válido puede provocar una implementación incorrecta de la API.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: integer
+                        format: big
+                      quantity:
+                        type: number
+                        format: decimal
+                      price:
+                        type: number
+                        format: decimal
+                amount:
+                  type: number
+                  format: decimal
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: integer
+                      quantity:
+                        type: integer
+                      price:
+                        type: number
+                        format: double
+                amount:
+                  type: number
+                  format: double
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    products:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          productId:
+                            type: integer
+                            format: big
+                          quantity:
+                            type: number
+                            format: decimal
+                          price:
+                            type: number
+                            format: decimal
+                    amount:
+                      type: number
+                      format: decimal
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    products:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          productId:
+                            type: integer
+                          quantity:
+                            type: integer
+                          price:
+                            type: number
+                            format: double
+                    amount:
+                      type: number
+                      format: double
+</pre>

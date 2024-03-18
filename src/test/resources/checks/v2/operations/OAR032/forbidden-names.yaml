@@ -1,0 +1,20 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /elements: # Noncompliant {{OAR032: Ambiguous path parts not encouraged: elements}}
+    get:
+      responses:
+        200:
+          description: Ok
+  /a/nested/items: # Noncompliant {{OAR032: Ambiguous path parts not encouraged: items}}
+    get:
+      responses:
+        200:
+          description: Ok
+  /another/{param}/with/valores: # Noncompliant {{OAR032: Ambiguous path parts not encouraged: valores}}
+    get:
+      responses:
+        200:
+          description: Ok

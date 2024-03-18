@@ -1,18 +1,5 @@
 <p>El nombre de host debe ser un subdominio del nombre de dominio de la organización.</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "host": "other.domain.com", 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -22,19 +9,6 @@ host: other.domain.com
 paths: {}
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "host": "api.apiaddicts.org",
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -44,29 +18,6 @@ host: api.apiaddicts.org
 paths: {}
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "servers": [
-        {
-            "url": "https://aws-dev-apiaddicts.org/api-users/v1/"
-        }, 
-        {
-            "url": "https://aws-test.apiaddicts.org/api-users/v1/"
-        }, 
-        {
-            "url": "https://aws-apiaddicts.org/api-users/v1/"
-        }
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
@@ -79,29 +30,6 @@ servers:
 paths: {}
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "servers": [
-        {
-            "url": "https://api-dev.apiaddicts.org/api-users/v1/"
-        }, 
-        {
-            "url": "https://api-test.apiaddicts.org/api-users/v1/"
-        }, 
-        {
-            "url": "https://api.apiaddicts.org/api-users/v1/"
-        }
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

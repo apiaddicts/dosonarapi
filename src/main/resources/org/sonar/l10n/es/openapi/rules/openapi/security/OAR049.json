@@ -1,0 +1,13 @@
+{
+  "title": "OAR049 - NoContent204 - 204 No Content no debe devolver nada.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "safety"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.sonar.samples.openapi</groupId>
+  <groupId>apiquality.sonar.openapi</groupId>
   <artifactId>dosonarapi-community</artifactId>
-  <version>1.0.3</version>
+  <version>${TAG_NAME}</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarQube OpenAPI Custom Rules Example</name>
@@ -32,6 +31,13 @@
 
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-console-standalone -->
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-console-standalone</artifactId>
+        <version>1.8.2</version>
+        <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.apiaddicts.apitools.dosonarapi</groupId>
       <artifactId>openapi-front-end</artifactId>
@@ -44,9 +50,19 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+      <version>2.13.3</version>
+    </dependency>
+    <dependency>
       <groupId>org.sonarsource.analyzer-commons</groupId>
       <artifactId>sonar-analyzer-commons</artifactId>
       <version>${sonaranalyzer.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.networknt</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>1.0.87</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.json/json -->
     <dependency>
@@ -85,7 +101,7 @@
         <configuration>
           <pluginKey>openapi-custom</pluginKey>
           <pluginName>OpenAPI Custom</pluginName>
-          <pluginClass>org.sonar.samples.openapi.OpenAPICustomPlugin</pluginClass>
+          <pluginClass>apiquality.sonar.openapi.OpenAPICustomPlugin</pluginClass>
           <skipDependenciesPackaging>true</skipDependenciesPackaging>
           <sonarLintSupported>true</sonarLintSupported>
           <sonarQubeMinVersion>${sonarQubeMinVersion}</sonarQubeMinVersion>
@@ -159,4 +175,11 @@
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <repository>
+        <id>apiquality</id>
+        <url>https://nexus.cloudappi.net/repository/apiquality</url>
+    </repository>
+  </distributionManagement>  
 </project>
+

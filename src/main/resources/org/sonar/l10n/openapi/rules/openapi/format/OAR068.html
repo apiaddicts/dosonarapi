@@ -1,0 +1,119 @@
+<p>RequestBody and Responses schema property names must be compliant with the PascalCase naming convention</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /user:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              first_name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            properties:
+              user_id: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                type: integer
+  </pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        parameters:
+          - in: body
+            name: body
+            required: true
+            schema:
+              type: object
+              properties:
+                FirstName:
+                  type: string
+                LastName:
+                  type: string
+        responses:
+          '200':
+            description: Success
+            schema:
+              type: object
+              properties:
+                UserId:
+                  type: integer
+                UserName:
+                  type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  first_name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                    type: string
+                  last_name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user_id: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                      type: integer
+                    user_name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}</span>
+                      type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  LastName:
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    UserName:
+                      type: string
+</pre>

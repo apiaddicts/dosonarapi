@@ -1,0 +1,13 @@
+{
+  "title": "OAR031 - Examples - Las respuestas, el cuerpo de la solicitud, los parámetros y las propiedades deben tener un ejemplo definido",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "examples"
+  ],
+  "defaultSeverity": "MAJOR"
+}

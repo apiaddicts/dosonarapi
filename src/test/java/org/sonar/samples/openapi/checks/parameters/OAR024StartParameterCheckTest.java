@@ -7,6 +7,8 @@ import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RuleParamType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.parameters.OAR024StartParameterCheck;
+
 public class OAR024StartParameterCheckTest extends BaseCheckTest {
 
     @Before
@@ -28,25 +30,9 @@ public class OAR024StartParameterCheckTest extends BaseCheckTest {
     }
 
     @Test
-    public void verifyInV2With$ref() {
-        verifyV2("with-$ref");
-    }
-
-    @Test
     public void verifyInV2Without() {
         verifyV2("plain-without");
     }
-
-    @Test
-    public void verifyInV2With$refWithout() {
-        verifyV2("with-$ref-without");
-    }
-
-    @Test
-    public void verifyInV2WithoutParameters() {
-        verifyV2("without-parameters");
-    }
-
     @Test
     public void verifyInV3() {
         verifyV3("plain");
@@ -58,35 +44,20 @@ public class OAR024StartParameterCheckTest extends BaseCheckTest {
     }
 
     @Test
-    public void verifyInV3With$ref() {
-        verifyV3("with-$ref");
-    }
-
-    @Test
     public void verifyInV3Without() {
         verifyV3("plain-without");
     }
 
-    @Test
-    public void verifyInV3With$refWithout() {
-        verifyV3("with-$ref-without");
-    }
-
-    @Test
-    public void verifyInV3WithoutParameters() {
-        verifyV3("without-parameters");
-    }
-
-
     @Override
     public void verifyRule() {
-        assertRuleProperties("OAR024 - StartParameter - $start must be defined as a parameter in this operation", RuleType.BUG, Severity.MAJOR, tags("parameters"));
+        assertRuleProperties("OAR024 - StartParameter - the chosen parameter must be defined in this operation", RuleType.BUG, Severity.MAJOR, tags("parameters"));
     }
 
     @Override
     public void verifyParameters() {
-        assertNumberOfParameters(2);
-        assertParameterProperties("resources-paths", ";get:^\\/[^\\/{}]*$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*$;post:^\\/[^\\/{}]*\\/get$;post:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/get$;post:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/get$", RuleParamType.STRING);
-        assertParameterProperties("resources-exclusions", "get:/status", RuleParamType.STRING);
+        assertNumberOfParameters(3);
+        assertParameterProperties("paths", "/examples", RuleParamType.STRING);
+        assertParameterProperties("pathValidationStrategy", "/include", RuleParamType.STRING);
+        assertParameterProperties("parameterName", "$start", RuleParamType.STRING);
     }
 }

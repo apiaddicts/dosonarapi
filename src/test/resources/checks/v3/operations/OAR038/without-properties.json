@@ -1,0 +1,53 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/endpoint": {
+      "post": {
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/createResponse"
+          },
+          "204": {
+            "description": "No content"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "response": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/post_response"
+          }
+        ]
+      },
+      "post_response": {
+        "type": "object",
+        "properties": {
+          "data": { # Noncompliant {{OAR038: At least you have to define the identifier property}}
+            "type": "object"
+          }
+        }
+      }
+    },
+    "responses": {
+      "createResponse": {
+        "description": "Ok",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/response"
+            }
+          }
+        }
+      }
+    }
+  }
+}

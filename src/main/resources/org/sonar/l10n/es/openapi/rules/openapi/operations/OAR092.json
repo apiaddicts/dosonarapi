@@ -1,0 +1,13 @@
+{
+    "title": "OAR092 - RequestBodyOnlyRef - RequestBody must contain only references ($ref)",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

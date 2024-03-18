@@ -3,11 +3,11 @@ info:
   version: 1.0.0
   title: Swagger Petstore
 paths:
-  /pets:
+  /examples:
     get:
       parameters:
         - in: query
-          name: other
+          name: $select
           schema:
             type: array
             items:

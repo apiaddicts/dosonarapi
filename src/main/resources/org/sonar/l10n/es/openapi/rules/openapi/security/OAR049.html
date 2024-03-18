@@ -1,0 +1,85 @@
+<p>Las respuestas con código 204 no deben devolver contenido.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets/{petId}:
+    delete:
+      parameters:
+        - in: path
+          name: petId
+          required: true
+          type: string
+          format: uuid
+      responses:
+        204:
+          description: Deleted
+          schema:
+            type: object
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets/{petId}:
+    delete:
+      parameters:
+        - in: path
+          name: petId
+          required: true
+          type: string
+          format: uuid
+      responses:
+        204:
+          description: Deleted
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets/{petId}:
+    delete:
+      parameters:
+        - in: path
+          name: petId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        204:
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets/{petId}:
+    delete:
+      parameters:
+        - in: path
+          name: petId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        204:
+          description: Deleted
+</pre>

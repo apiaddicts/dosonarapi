@@ -1,0 +1,96 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Swagger Petstore",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "/"
+      }
+    ],
+    "paths": {
+      "/endpoint": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/response"
+                  }
+                }
+              }
+            },
+            "204": {
+              "description": "No content",
+              "content": {
+              }
+            },
+            "400": {
+              "description": "Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/response"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "Unknown",
+              "content": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "response": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/standard_response"
+            }
+          ]
+        },
+        "standard_response": {
+          "type": "object",
+          "properties": {
+            "data": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "result": {
+              "required": [
+                "http_code",
+                "status",
+                "trace_id"
+              ],
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string" # Noncompliant {{OAR029: 'status' must be of type boolean}}
+                },
+                "http_code": {
+                  "type": "string" # Noncompliant {{OAR029: 'http_code' must be of type integer}}
+                },
+                "errors": {
+                  "type": "string" # Noncompliant {{OAR029: 'errors' must be of type array}}
+                },
+                "trace_id": {
+                  "type": "integer" # Noncompliant {{OAR029: 'trace_id' must be of type string}}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

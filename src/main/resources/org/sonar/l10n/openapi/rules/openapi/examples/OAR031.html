@@ -1,0 +1,157 @@
+<p>The examples can help developers to understand the response data structure and representation.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Responses must have one or more examples defined}}</span>
+          description: Pet list
+          schema:
+            $ref: '#/definitions/pets'
+definitions:
+  pet:
+    type: object
+    properties:
+      name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+        type: string
+      type: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+        type: string
+  pets:
+    type: object
+    properties:
+      size: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+        type: integer
+      pets:
+        type: array
+        items:
+          $ref: '#/definitions/pet'
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          schema:
+            $ref: '#/definitions/pets'
+          examples:
+            application/json:
+              size: 2
+              pets:
+                - name: Fluffy
+                  type: cat
+                - name: Sparky
+                  type: dog
+
+definitions:
+  pet:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Snow"
+      type:
+        type: string
+        example: "dog"
+  pets:
+    type: object
+    properties:
+      size:
+        type: integer
+        example: 1
+      pets:
+        type: array
+        items:
+          $ref: '#/definitions/pet'
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      responses:
+        206: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Responses must have one or more examples defined}}</span>
+          description: Pet list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pets'
+components:
+  schemas:
+    pet:
+      type: object
+      properties:
+        name: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+          type: string
+        type: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+          type: string
+    pets:
+      type: object
+      properties:
+        size: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR031: Properties must have an example defined}}</span>
+          type: integer
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/pet'
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pets'
+              example:
+                size: 2
+                pets:
+                - name: Fluffy
+                  type: cat
+                - name: Sparky
+                  type: dog
+components:
+  schemas:
+    pet:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Snow
+        type:
+          type: string
+          example: dog
+    pets:
+      type: object
+      properties:
+        size:
+          type: integer
+          example: 1
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/pet'
+</pre>

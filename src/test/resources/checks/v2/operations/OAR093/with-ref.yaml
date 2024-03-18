@@ -1,0 +1,23 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      summary: Get all pets
+      responses:
+        '200':
+          $ref: '#/responses/AllPets'
+responses:
+  AllPets:
+    description: A list of pets
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string

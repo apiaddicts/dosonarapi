@@ -1,0 +1,109 @@
+<p>The string properties of the specified parameters must define a byte or binary format</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<h3>In case "product, line and price" are the fields to wich the rule is applied</h3>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /invoices:
+      get:
+        responses:
+          200:
+            description: A invoice.
+            schema:
+              type: object
+              properties:
+                product: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                  type: string 
+                  format: int128
+                line: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                  type: string 
+                lapiz:
+                  type: string
+                price:  <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                  type: string
+                  format: byte
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /invoices:
+      get:
+        responses:
+          200:
+            description: A invoice.
+            schema:
+              type: object
+              properties:
+                goma:  
+                  type: string 
+                  format: byte
+                linea: 
+                  type: string 
+                  format: byte
+                lapiz:
+                  type: string
+                  format: byte
+                precio:  
+                  type: string
+                  format: byte
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: "1.0.0"
+    title: "Swagger Petstore"
+  paths:
+    /invoices:
+      get:
+        responses:
+          '200':
+            description: A invoice.
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    product: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                      type: string 
+                      format: int128
+                    line: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                      type: string 
+                    price:  <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format}}</span>
+                      type: string
+                      format: byte
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: "1.0.0"
+    title: "Swagger Petstore"
+  paths:
+    /invoices:
+      get:
+        responses:
+          '200':
+            description: A invoice.
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    producto:  
+                    type: string
+                    format: byte
+                    linea: 
+                      type: string
+                      format: byte 
+                    precio:
+                      type: string
+                      format: byte
+</pre>

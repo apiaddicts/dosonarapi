@@ -1,5 +1,5 @@
 {
-  "title": "OAR024 - StartParameter - $start must be defined as a parameter in this operation",
+  "title": "OAR024 - StartParameter - the chosen parameter must be defined in this operation",
   "type": "BUG",
   "status": "ready",
   "remediation": {

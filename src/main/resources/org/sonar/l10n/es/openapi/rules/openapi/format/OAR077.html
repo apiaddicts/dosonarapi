@@ -1,0 +1,73 @@
+<p>Todos los parámetros in query deben ser snake_case</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: "1.0.0"
+      title: "API que no cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              type: string
+            - name: userFirstName
+              in: query
+              type: string
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: "1.0.0"
+      title: "API que cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              type: string
+            - name: user_first_name
+              in: query
+              type: string
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: "1.0.0"
+      title: "API que no cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              schema:
+                type: string
+            - name: userFirstName
+              in: query
+              schema:
+                type: string
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: "1.0.0"
+      title: "API que cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              schema:
+                type: string
+            - name: user_first_name
+              in: query
+              schema:
+                type: string
+</pre>

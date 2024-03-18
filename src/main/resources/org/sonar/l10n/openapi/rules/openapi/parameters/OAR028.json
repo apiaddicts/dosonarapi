@@ -1,5 +1,5 @@
 {
-  "title": "OAR028 - FilterParameter - $filter must be defined as a parameter in this operation",
+  "title": "OAR028 - FilterParameter - the chosen parameter must be defined in this operation",
   "type": "BUG",
   "status": "ready",
   "remediation": {

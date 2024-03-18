@@ -1,0 +1,35 @@
+{
+    "swagger" : "2.0",
+    "info" : {
+      "version" : "1.0.0",
+      "title" : "Swagger Petstore"
+    },
+    "paths" : {
+      "/status" : {
+        "get" : {
+          "parameters" : [ {
+            "in" : "query",
+            "name" : "other",
+            "type" : "array",
+            "required" : false,
+            "items" : {
+              "type" : "string"
+            }
+          }, {
+            "in" : "query",
+            "name" : "$filter",
+            "type" : "array",
+            "required" : false,
+            "items" : {
+              "type" : "string"
+            }
+          } ],
+          "responses" : {
+            "206" : {
+              "description" : "Ok"
+            }
+          }
+        }
+      }
+    }
+  }

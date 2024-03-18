@@ -1,0 +1,76 @@
+<p>Al leer una URL, debe ser posible interpretar a qué recursos se está refiriendo de manera concreta.</p>
+<p>Deben evitarse los nombres ambiguos en los recursos. La recomendación es utilizar nombres específicos.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices/{id}/elements:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices/{id}/products:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices/{id}/elements:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices/{id}/products:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>

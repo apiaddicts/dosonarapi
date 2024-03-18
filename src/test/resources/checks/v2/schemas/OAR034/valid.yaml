@@ -1,0 +1,74 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /endpoint:
+    get:
+      responses:
+        206:
+          description: Ok
+          schema:
+            $ref: '#/definitions/response'
+        204:
+          description: No content
+        400:
+          description: Error
+          schema:
+            $ref: '#/definitions/response'
+        default:
+          description: Unknown
+
+definitions:
+  response:
+    type: object
+    allOf:
+      - $ref: '#/definitions/paged_response'
+    properties:
+      data:
+        type: object
+        properties:
+          values:
+            type: array
+            items:
+              type: string
+  paged_response:
+    type: object
+    properties:
+      paging:
+        type: object
+        properties:
+          start:
+            type: integer
+          limit:
+            type: integer
+          total:
+            type: integer
+          numPages:
+            type: integer
+          links:
+            type: object
+            properties:
+              self:
+                $ref: '#/definitions/link'
+              first:
+                $ref: '#/definitions/link'
+              previous:
+                $ref: '#/definitions/link'
+              next:
+                $ref: '#/definitions/link'
+              last:
+                $ref: '#/definitions/link'
+            required:
+              - self
+              - previous
+              - next
+        required:
+          - start
+          - limit
+          - links
+  link:
+    type: object
+    properties:
+      href:
+        type: string

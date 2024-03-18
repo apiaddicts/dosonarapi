@@ -1,0 +1,63 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Swagger Petstore (GETs only)"
+    },
+    "paths": {
+      "/resources": {
+        "delete": { 
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/resources/{r_id}": {
+        "delete": { 
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/resources/get": {
+        "delete": {  
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/resources/delete": {
+        "delete": {  
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/resources/{r_id}/other": {
+        "delete": { 
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/resources/me": {
+        "delete": { 
+          "responses": { # Noncompliant {{OAR109: Use default instead of directly specifying 5XX codes}}
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }

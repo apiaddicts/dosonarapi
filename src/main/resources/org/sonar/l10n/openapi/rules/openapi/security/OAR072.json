@@ -1,0 +1,13 @@
+{
+    "title": "OAR072 - NonOKModelResponseCheck - Non OK responses shouldnt have stackTraces",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+}

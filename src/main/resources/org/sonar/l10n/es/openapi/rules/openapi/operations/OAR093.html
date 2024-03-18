@@ -1,0 +1,104 @@
+<p>Responses must contain only references ($ref)</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /pets:
+      get:
+        summary: Get all pets
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR093: Responses must contain only references ($ref)}}</span>
+          '200': 
+            description: A list of pets
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /pets:
+      get:
+        summary: Get all pets
+        responses:
+          '200':
+            $ref: '#/responses/AllPets'
+  responses:
+    AllPets:
+      description: A list of pets
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /pets:
+      get:
+        summary: Get all pets
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR093: Responses must contain only references ($ref)}}</span>
+          '200':
+            description: A list of pets
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /pets:
+      get:
+        summary: Get all pets
+        responses:
+          '200':
+            $ref: '#/components/responses/AllPets'
+  components:
+    responses:
+      AllPets:
+        description: A list of pets
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+</pre>

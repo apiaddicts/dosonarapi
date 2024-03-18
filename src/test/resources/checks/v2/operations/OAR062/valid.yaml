@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /status:
+    post:
+      summary: Get API status
+      responses:
+        200:
+          description: OK
+        202:
+          description: Accepted
+        206:
+          description: Partial Content
+  /users:
+    post:
+      summary: Get all users
+      responses:
+        200:
+          description: OK
+        202:
+          description: Accepted
+        206:
+          description: Partial Content

@@ -1,0 +1,157 @@
+<p>Una ruta compleja puede ser una insinuación para detectar definiciones de API incorrectas.</p>
+<p>El número de partes de la ruta debe ser menor a 4, cuando el número de partes de la ruta sea mayor o igual a 6 se mostrará un error.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices/{invoiceId}/products/{productId}:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+        - in: path
+          name: productId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}/products:
+    get:
+      parameters:
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /products/{productId}:
+    get:
+      parameters:
+        - in: path
+          name: productId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices/{invoiceId}/products/{productId}:
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}/products:
+    get:
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /products/{productId}:
+    get:
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+</pre>

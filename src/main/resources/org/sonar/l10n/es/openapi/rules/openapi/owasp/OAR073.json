@@ -1,0 +1,13 @@
+{
+    "title": "OAR073 - RateLimit - La API debería incluir una respuesta 429 para indicar la limitación de la tasa",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "owasp"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

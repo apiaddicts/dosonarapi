@@ -1,0 +1,111 @@
+<p>Parameters must contain only references ($ref)</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    title: Sample API
+    version: '1.0.0'
+  paths:
+    /sample:
+      get:
+        parameters: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR091: Parameters must contain only references ($ref)}}</span>
+          - name: userData
+            in: body
+            description: User Data
+            required: true
+            schema:
+              $ref: '#/definitions/User'
+        responses:
+          '200':
+            description: Successful response
+  definitions:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    title: Sample API
+    version: '1.0.0'
+  paths:
+    /sample:
+      get:
+        parameters:
+          - $ref: '#/parameters/UserId'
+          - $ref: '#/parameters/UserName'
+        responses:
+          '200':
+            description: Successful response
+  parameters:
+    UserId:
+      name: userId
+      in: query
+      description: User ID
+      required: true
+      type: integer
+    UserName:
+      name: userName
+      in: query
+      description: User Name
+      type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /pets:
+      get:
+        summary: Get all pets
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR093: Responses must contain only references ($ref)}}</span>
+          '200':
+            description: A list of pets
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Sample API
+    version: 1.0.0
+  paths:
+    /sample:
+      get:
+        parameters:
+          - $ref: '#/components/parameters/UserParam'
+        responses:
+          '200':
+            description: Successful response
+  components:
+    parameters:
+      UserParam:
+        name: user
+        in: query
+        description: User information
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+</pre>

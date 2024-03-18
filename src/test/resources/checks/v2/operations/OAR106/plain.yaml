@@ -1,0 +1,35 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Swagger Petstore (GETs only)
+paths:
+  /resources:
+    patch: 
+      responses:
+        '200':
+          description: Ok
+  /resources/{r_id}:
+    patch: 
+      responses:
+        '200':
+          description: Ok
+  /resources/get: 
+    patch: # Noncompliant {{OAR106: Operation not recommended for resource path: resources/get}} 
+      responses:
+        '200':
+          description: Ok
+  /resources/delete:  
+    patch:  # Noncompliant {{OAR106: Operation not recommended for resource path: resources/delete}}
+      responses:
+        '200':
+          description: Ok
+  /resources/{r_id}/other:
+    patch: 
+      responses:
+        '200':
+          description: Ok
+  /resources/me: 
+    patch: 
+      responses:
+        '200':
+          description: Ok

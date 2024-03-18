@@ -1,0 +1,58 @@
+<p>Definir la respuesta "default" es obligatorio.</p>
+<p>La respuesta "default" se utiliza para todos los códigos HTTP que no se tratan individualmente.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error
+</pre>

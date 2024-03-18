@@ -1,0 +1,28 @@
+openapi: '3.0.0'
+info:
+  title: API Sample
+  version: '1.0.0'
+paths:
+  /pets:
+    get:
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        $ref: '#/components/requestBodies/PetDetailsIncorrect' # Noncompliant {{OAR089: The $ref of a request body must end with the suffix Body}}
+components:
+  requestBodies:
+    PetDetailsIncorrect:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string

@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Compliant API"
+    },
+    "paths": {
+      "/items": {
+        "get": {
+          "summary": "Get a list of items",
+          "responses": {
+            "200": {
+              "description": "A list of items",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "429": {
+              "description": "Too Many Requests",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error_response"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}

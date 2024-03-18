@@ -1,0 +1,55 @@
+<p>The $ref of a request body must end with a corresponding suffix</p>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: API de ejemplo
+    version: "1.0"
+  paths:
+    /mascotas:
+      get:
+        parameters:
+          - $ref: '#/components/parameters/idMascotaRef' <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR089: The $ref of a request body must end with the suffix Body}}</span>
+        responses:
+          '200':
+            description: Lista de mascotas
+  components:
+    parameters:
+      idMascotaRef:
+        name: idMascota
+        in: query
+        required: true
+        schema:
+          type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+    openapi: '3.0.0'
+    info:
+      title: API Sample
+      version: '1.0.0'
+    paths:
+      /pets:
+        get:
+          parameters:
+            - name: petId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            '200':
+              description: Successful response
+          requestBody:
+            $ref: '#/components/requestBodies/PetDetailsBody'
+    components:
+      requestBodies:
+        PetDetailsBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+</pre> 

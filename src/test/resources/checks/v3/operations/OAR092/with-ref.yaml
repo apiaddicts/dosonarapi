@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: '1.0.0'
+paths:
+  /pets:
+    post:
+      summary: Create a pet
+      requestBody:
+        $ref: '#/components/requestBodies/PetBody'
+      responses:
+        '201':
+          description: Pet created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+components:
+  requestBodies:
+    PetBody:
+      description: The pet to create
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string

@@ -12,8 +12,10 @@ paths:
           items:
             type: string
         - in: query
-          name: $total
-          type: boolean
+          name: select
+          type: array
+          items:
+            type: string
       responses:
         206:
           description: Ok

@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      summary: Get all pets
+      responses:
+        '200':
+          $ref: '#/components/responses/AllPets'
+components:
+  responses:
+    AllPets:
+      description: A list of pets
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string

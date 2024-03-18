@@ -1,0 +1,66 @@
+<b>
+  Para facilitar la monitorización de las APIs desde herramientas externas se debe incluir un endpoint de health check en todas ellas. Dicho endpoint informará del estado de salud de la API por medio de la respuesta estándar, estableciendo el valor adecuado en el campo status del objeto result. En caso de error es recomendable incluir la causa del mismo en el array de errores de la respuesta estándar.
+  Este endpoint se definirá siempre de la siguiente manera: GET {basepath}/status
+</b>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+  /status:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+  /status:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>

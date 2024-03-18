@@ -1,0 +1,13 @@
+{
+    "title": "OAR098 - LongBasePath - Base path must not have more than two parts",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

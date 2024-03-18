@@ -46,6 +46,12 @@ paths:
               ipv6:
                 type: string
                 format: ipv6
+              hex1:
+                type: string
+                format: HEX
+              hex16:
+                type: string
+                format: HEX(16)
               other:
                 type: string # Noncompliant {{OAR037: String types requires a valid format}}
                 format: YYYY-MM-DD

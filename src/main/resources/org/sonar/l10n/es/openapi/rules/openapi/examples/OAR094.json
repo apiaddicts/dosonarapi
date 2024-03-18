@@ -1,0 +1,13 @@
+{
+    "title": "OAR094 - UseExamples - Se recomienda utilizar 'examples' en lugar de 'example' ya que algunas herramientas como microcks utilizan esta sección de la definición",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "examples"
+    ],
+    "defaultSeverity": "MINOR"
+  }

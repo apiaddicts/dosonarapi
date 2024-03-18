@@ -1,0 +1,33 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Swagger Petstore"
+    },
+    "parameters": {
+      "selectParameter": {
+        "in": "query",
+        "name": "$exclude",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "paths": {
+      "/examples": {
+        "get": {
+          "parameters": [
+            {
+              "$ref": "#/parameters/selectParameter"
+            }
+          ],
+          "responses": {
+            "206": {
+              "description": "Ok"
+            }
+          }
+        }
+      }
+    }
+  }

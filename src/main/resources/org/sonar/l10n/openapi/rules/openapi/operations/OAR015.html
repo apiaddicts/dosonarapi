@@ -1,0 +1,157 @@
+<p>A complex path may be a hint to detect wrong API definitions. </p>
+<p>The number of parts of the path must be less than 4, when the number of parts of the route is equal or greater than 6 an error will be displayed. </p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices/{invoiceId}/products/{productId}: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR015: Resources depth level should be smaller}}</span>
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+        - in: path
+          name: productId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}/products:
+    get:
+      parameters:
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+  /products/{productId}:
+    get:
+      parameters:
+        - in: path
+          name: productId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices/{invoiceId}/products/{productId}: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR015: Resources depth level should be smaller}}</span>
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /invoices/{invoiceId}/products:
+    get:
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+  /products/{productId}:
+    get:
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+</pre>

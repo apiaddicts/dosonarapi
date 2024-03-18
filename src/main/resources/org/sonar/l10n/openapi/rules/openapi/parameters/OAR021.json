@@ -1,5 +1,5 @@
 {
-  "title": "OAR021 - ExcludeParameter - $exclude must be defined as a parameter in this operation",
+  "title": "OAR021 - ExcludeParameter - the chosen parameter must be defined in this operation",
   "type": "BUG",
   "status": "ready",
   "remediation": {

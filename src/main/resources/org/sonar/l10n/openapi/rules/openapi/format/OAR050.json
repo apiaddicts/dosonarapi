@@ -1,0 +1,13 @@
+{
+  "title": "OAR050 - ProvideOpSummary - Provide a summary for each operation.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "2mn"
+  },
+  "tags": [
+    "format"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

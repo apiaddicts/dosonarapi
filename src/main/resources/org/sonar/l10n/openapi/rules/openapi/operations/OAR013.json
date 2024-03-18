@@ -1,0 +1,13 @@
+{
+  "title": "OAR013 - DefaultResponse - Default response is required",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

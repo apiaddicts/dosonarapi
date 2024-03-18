@@ -7,7 +7,7 @@
     "constantCost": "3h"
   },
   "tags": [
-    "vulnerability"
+    "safety"
   ],
   "defaultSeverity": "BLOCKER"
 }

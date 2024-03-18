@@ -3,14 +3,9 @@ info:
   version: 1.0.0
   title: Swagger Petstore
 paths:
-  /pets:
+  /examples:
     get:
       parameters:
-        - in: query
-          name: other
-          type: array
-          items:
-            type: string
         - in: query
           name: $select
           type: array

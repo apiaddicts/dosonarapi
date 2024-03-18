@@ -1,0 +1,38 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Ejemplo de API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/item": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id", "nombre"]
+                  },
+                  "example": { # Noncompliant {{OAR108: Schema does not match the provided example}}
+                    "id": "hola", 
+                    "nombre": "Ejemplo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

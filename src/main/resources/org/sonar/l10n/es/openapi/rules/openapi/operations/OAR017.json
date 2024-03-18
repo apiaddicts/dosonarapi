@@ -1,0 +1,13 @@
+{
+  "title": "OAR017 - ResourcePath - El path del recurso debe de alternar entre partes estáticas y parametrizadas",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

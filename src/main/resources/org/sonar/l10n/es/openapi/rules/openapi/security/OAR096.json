@@ -1,0 +1,13 @@
+{
+    "title": "OAR096 - ForbiddenResponses - Cuando se definen esquemas de seguridad, se deben definir códigos de respuesta de autorización",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "1h"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

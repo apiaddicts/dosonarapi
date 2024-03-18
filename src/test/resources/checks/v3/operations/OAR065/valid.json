@@ -1,0 +1,41 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Swagger Petstore"
+    },
+    "paths": {
+        "/status": {
+          "delete": {
+            "summary": "Get API status",
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "202": {
+                "description": "Accepted"
+              },
+              "206": {
+                "description": "Partial Content"
+              }
+            }
+          }
+        },
+        "/users": {
+          "delete": {
+            "summary": "Get all users",
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "202": {
+                "description": "Accepted"
+              },
+              "206": {
+                "description": "Partial Content"
+              }
+            }
+          }
+        }
+      }
+}

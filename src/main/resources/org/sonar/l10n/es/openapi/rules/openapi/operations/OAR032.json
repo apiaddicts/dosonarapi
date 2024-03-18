@@ -1,0 +1,13 @@
+{
+  "title": "OAR032 - AmbiguousElementsPath - Los nombres ambiguos en los paths no estan recomendados",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

@@ -5,20 +5,22 @@
     "title" : "Swagger Petstore"
   },
   "paths" : {
-    "/pets" : {
-      "get" : {
-        "parameters" : [ { # Noncompliant {{OAR025: $limit must be defined as a parameter in this operation}}
+    "/examples" : {
+      "get" : { # Noncompliant {{OAR025: $limit must be defined as a parameter in this operation}}
+        "parameters" : [ { 
           "in" : "query",
-          "name" : "other",
+          "name" : "other", 
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         }, {
           "in" : "query",
-          "name" : "limit",
-          "type" : "integer",
-          "format" : "int64"
+          "name" : "hola", 
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "206" : {

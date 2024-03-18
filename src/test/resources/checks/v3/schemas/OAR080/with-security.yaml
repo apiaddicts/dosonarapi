@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Sample API
+paths:
+  /users:
+    get:
+      summary: Get all users
+      security:
+        - apiKey: []
+        - oauth2: []
+      responses:
+        '200':
+          description: OK
+  /products:
+    post:
+      summary: Create a new product
+      security:
+        - apiKey: []
+        - oauth2: []
+      responses:
+        '200':
+          description: OK
+  /orders:
+    put:  # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      summary: Update an order
+      security: 
+        - unknownScheme: [] 
+      responses:
+        '200':
+          description: OK
+  /invoices:
+    delete: # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      summary: Delete an invoice
+      security: 
+        - unknownScheme: [] 
+      responses:
+        '200':
+          description: OK

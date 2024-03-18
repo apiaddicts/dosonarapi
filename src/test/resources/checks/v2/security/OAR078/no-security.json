@@ -1,0 +1,52 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Sample API"
+    },
+    "securityDefinitions": {
+      "apiKey": {
+        "type": "apiKey",
+        "name": "X-API-Key",
+        "in": "header"
+      }
+    },
+    "paths": {
+      "/users": {
+        "get": {    # Noncompliant {{OAR078: All API methods must have security}}
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/products": {
+        "post": {   # Noncompliant {{OAR078: All API methods must have security}}
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/orders": {
+        "put": {    # Noncompliant {{OAR078: All API methods must have security}}
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/invoices": {
+        "delete": { # Noncompliant {{OAR078: All API methods must have security}}
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    }
+  }

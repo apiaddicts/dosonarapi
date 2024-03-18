@@ -1,0 +1,23 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Swagger Petstore"
+paths:
+  /invoices:
+    get:
+      responses:
+        '200':
+          description: A invoice.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product:  
+                    type: string # Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format.}}
+                    format: int128
+                  line: 
+                    type: string # Noncompliant {{OAR082: The string properties of the specified parameters must define a byte or binary format.}}
+                  price:  
+                    type: string
+                    format: byte

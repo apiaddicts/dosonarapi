@@ -1,174 +1,101 @@
-<p>En operaciones con respuesta paginada, el parámetro $limit, que sirve para indicar el tamaño de la página, se debe definir como parámetro no obligatorio.</p>
+<p>El parámetro elegido debe definirse en esta operación. Por defecto, $limit</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters: 
+          - in: query
+            name: other 
+            type: array
+            items:
+              type: string
+          - in: query
+            name: hola 
+            type: array
+            items:
+              type: string
+        responses:
+          206:
+            description: Ok
 </pre>
-<h3>YAML</h3>
+<h2>Compliant Solution (OpenAPI 2)</h2>
 <pre>
-swagger: "2.0"
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      responses:
-        200:
-          description: Ok
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: $limit
+            type: array
+            items:
+              type: string
+          - in: query
+            name: $limit
+            type: array
+            items:
+              type: string
+        responses:
+          206:
+            description: Ok
 </pre>
-<h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
 <pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$limit", 
-                        "required": false, 
-                        "type": "integer", 
-                        "default": 25
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters: 
+          - in: query
+            name: other 
+            schema:
+              type: array
+              items:
+                type: string
+          - in: query
+            name: select 
+            schema:
+              type: array
+              items:
+                type: string
+        responses:
+          206:
+            description: Ok
 </pre>
-<h3>YAML</h3>
+<h2>Compliant Solution (OpenAPI 3)</h2>
 <pre>
-swagger: "2.0"
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $limit
-          required: false
-          type: integer
-          default: 25
-      responses:
-        200:
-          description: Ok
-</pre>
-<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-openapi: 3.0.1
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      responses:
-        200:
-          description: Ok
-</pre>
-<h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$limit", 
-                        "required": false, 
-                        "schema": {
-                            "type": "integer", 
-                            "default": 25
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-openapi: 3.0.1
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $limit
-          required: false
-          schema:
-            type: integer
-            default: 25
-      responses:
-        200:
-          description: Ok
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: $limit
+            schema:
+              type: array
+              items:
+                type: string
+          - in: query
+            name: $limit
+            schema:
+              type: array
+              items:
+                type: string
+        responses:
+          206:
+            description: Ok
 </pre>

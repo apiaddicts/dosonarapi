@@ -1,0 +1,21 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /examples:
+    get:
+      parameters:
+        - in: query
+          name: $expand
+          type: array
+          items:
+            type: string
+        - in: query
+          name: $expand
+          type: array
+          items:
+            type: string
+      responses:
+        206:
+          description: Ok

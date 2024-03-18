@@ -1,0 +1,29 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "produces" : [ "application/json", "text/*" ], # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+  "consumes" : [ "application/json", "text/*" ], # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+  "paths" : {
+    "/pets" : {
+      "get" : {
+        "produces" : [ "application", "text/plain" ], # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+        "consumes" : [ "application", "text/plain" ], # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+        "responses" : {
+          "200" : {
+            "description" : "some operation"
+          }
+        }
+      },
+      "post" : {
+        "responses" : {
+          "200" : {
+            "description" : "some operation"
+          }
+        }
+      }
+    }
+  }
+}

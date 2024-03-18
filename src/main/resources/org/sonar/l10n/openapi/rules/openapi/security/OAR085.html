@@ -1,0 +1,29 @@
+<p>The OpenAPI version should be one of the allowed by the organization</p>
+<h3>In case 3.0.2 is not allowed</h3>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    title: Sample API
+    description: This is a sample Swagger API.
+    version: "1.0.0"
+  paths: {} 
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.2  <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR085: The OpenAPI version should be one of the allowed by the organization}}</span>
+  info:
+    title: Sample API
+    description: This is a sample API.
+    version: 1.0.0
+  paths: {}
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0 
+  info:
+    title: Sample API
+    description: This is a sample API.
+    version: 1.0.0
+  paths: {}
+</pre>

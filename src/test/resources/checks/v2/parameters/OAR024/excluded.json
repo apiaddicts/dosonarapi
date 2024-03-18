@@ -16,9 +16,11 @@
           }
         }, {
           "in" : "query",
-          "name" : "$start",
-          "type" : "integer",
-          "format" : "int64"
+          "name" : "select",
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "206" : {

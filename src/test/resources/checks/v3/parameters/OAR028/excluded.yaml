@@ -13,7 +13,7 @@ paths:
             items:
               type: string
         - in: query
-          name: $filter
+          name: select
           schema:
             type: array
             items:

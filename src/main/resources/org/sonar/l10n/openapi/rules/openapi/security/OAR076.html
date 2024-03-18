@@ -1,0 +1,125 @@
+<p>It is recommended to indicate a format for properties with numeric type.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /invoices:
+      get:
+        responses:
+          200:
+            description: A invoice.
+            schema:
+              type: object
+              properties:
+                price:
+                  type: number
+                  format: double
+                nested:
+                  type: object
+                  properties:
+                    value:
+                      type: number <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR076: Numeric types requires a valid format}}</span>
+                      format: int64
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: integer
+                        format: int32
+                      quantity:
+                        type: integer
+                        format: int32
+                      price:
+                        type: number
+                        format: double
+                amount:
+                  type: number
+                  format: double
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /invoices:
+      get:
+        responses:
+          200:
+            description: A invoice.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    price:
+                      type: number
+                      format: double
+                    nested:
+                      type: object
+                      properties:
+                        value:
+                          type: number <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR076: Numeric types requires a valid format}}</span>
+                          format: int64
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /invoices:
+    get:
+      responses:
+        200:
+          description: An invoice.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    products:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          productId:
+                            type: integer
+                            format: int32
+                          quantity:
+                            type: integer
+                            format: int32
+                          price:
+                            type: number
+                            format: double
+                    amount:
+                      type: number
+                      format: double
+</pre>

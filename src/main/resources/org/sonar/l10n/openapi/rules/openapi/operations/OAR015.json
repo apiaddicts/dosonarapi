@@ -1,0 +1,13 @@
+{
+  "title": "OAR015 - ResourceLevelMax - Resources depth level should be smaller",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "CRITICAL"
+}

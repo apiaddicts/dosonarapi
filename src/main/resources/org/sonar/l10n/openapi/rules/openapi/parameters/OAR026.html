@@ -1,84 +1,28 @@
 <p>The default value of $total parameter should be false to prevent performance issues.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$total", 
-                        "required": false, 
-                        "type": "boolean"
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-swagger: "2.0"
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $total
-          required: false
-          type: boolean
-      responses:
-        200:
-          description: Ok
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: other
+            type: array
+            items:
+              type: string
+          - in: query
+            name: $total
+            type: boolean
+            default: true <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR026: The $total parameter default value should be false}}</span>
+        responses:
+          206:
+            description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$total", 
-                        "required": false, 
-                        "type": "boolean", 
-                        "default": false
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -98,90 +42,31 @@ paths:
           description: Ok
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$total", 
-                        "required": false, 
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-openapi: 3.0.1
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $total
-          required: false
-          schema:
-            type: boolean
-      responses:
-        200:
-          description: Ok
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: other
+            schema:
+              type: array
+              items:
+                type: string
+          - in: query
+            name: $total
+            schema:
+              type: boolean
+              default: true <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR026: The $total parameter default value should be false}}</span>
+        responses:
+          206:
+            description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$total", 
-                        "required": false, 
-                        "schema": {
-                            "type": "boolean", 
-                            "default": false
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:

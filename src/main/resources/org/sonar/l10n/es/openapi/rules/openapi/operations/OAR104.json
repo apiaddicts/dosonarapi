@@ -1,0 +1,13 @@
+{
+    "title": "OAR104 - ResourcesByPostVerb - Operation not recommended for resource path",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "3h"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

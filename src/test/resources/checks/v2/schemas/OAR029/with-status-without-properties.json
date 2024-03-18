@@ -1,0 +1,64 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/endpoint" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          },
+          "204" : {
+            "description" : "No content"
+          },
+          "400" : {
+            "description" : "Error",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          },
+          "default" : {
+            "description" : "Unknown"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "response" : {
+      "type" : "object",
+      "allOf" : [ {
+        "$ref" : "#/definitions/standard_response"
+      } ],
+      "properties" : {
+        "data" : {
+          "type" : "object",
+          "properties" : {
+            "tipos" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "standard_response" : {
+      "type" : "object",
+      "properties" : {
+        "status" : { # Noncompliant {{OAR029: 'code' property is missing}} {{OAR029: 'description' property is missing}} {{OAR029: 'errors' property is missing}} {{OAR029: 'http_status' property is missing}} {{OAR029: 'internal_code' property is missing}}
+          "type" : "object",
+          "properties" : { },
+          "required" : [ "http_status", "code", "description", "errors" ]
+        }
+      }
+    }
+  }
+}

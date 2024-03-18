@@ -1,0 +1,13 @@
+{
+  "title": "OAR032 - AmbiguousElementsPath - Ambiguous path parts not encouraged",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

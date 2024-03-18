@@ -1,0 +1,40 @@
+<p>The second part of the path should be one of the alloweds</p>
+<p>In case 'hello' is the only allowed</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+basePath: /comercio/balances <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR102: The second part of the path should be one of the alloweds}}</span>
+paths: {}
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+basePath: /hola/hello 
+paths: {}
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+servers:
+  - url: https://domain.com/hola/hola <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR102: The second part of the path should be one of the alloweds}}</span>
+paths: {}
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+servers:
+    - url: https://domain.com/hola/hello 
+paths: {}
+</pre>

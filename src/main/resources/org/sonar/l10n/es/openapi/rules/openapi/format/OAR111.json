@@ -1,0 +1,13 @@
+{
+    "title": "OAR111 - ContactInformation - La información de contacto no puede estar vacía",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

@@ -1,0 +1,126 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/one": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}/six": { # Noncompliant {{OAR015: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}/six/{six}": { # Noncompliant {{OAR015: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/two/three/four/five/six/seven" : { # Noncompliant {{OAR015: Resources depth level should be smaller}}
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Ok"
+          }
+        }
+      }
+    }
+  }
+}

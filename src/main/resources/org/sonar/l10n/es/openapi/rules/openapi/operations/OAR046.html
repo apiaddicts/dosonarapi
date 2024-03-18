@@ -1,0 +1,87 @@
+<p>Debe categorizar las operaciones de su contrato con etiquetas. La categorización de las operaciones ayuda a los usuarios a comprender la amplia organización de la API y destaca el tipo de recursos manipulados.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+    post:
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: used-tag
+  description: a tag referenced in the operations
+- name: other-tag
+  description: a tag referenced in the operations
+paths:
+  /pets:
+    get:
+      tags:
+      - used-tag
+      responses:
+        200:
+          description: OK
+    post:
+      tags:
+      - other-tag
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: OK
+    post:
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: used-tag
+  description: a tag referenced in the operations
+- name: other-tag
+  description: a tag referenced in the operations
+paths:
+  /pets:
+    get:
+      tags:
+      - used-tag
+      responses:
+        200:
+          description: OK
+    post:
+      tags:
+      - other-tag
+      responses:
+        default:
+          description: the default response
+</pre>

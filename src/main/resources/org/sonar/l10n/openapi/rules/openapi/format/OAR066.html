@@ -1,0 +1,119 @@
+<p>RequestBody and Responses schema property names must be compliant with the snake_case naming convention</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /user:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              firstName: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR066: RequestBody and Responses schema property names must be compliant with the snake_case naming convention}}</span>
+                type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            properties:
+              userId: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR066: RequestBody and Responses schema property names must be compliant with the snake_case naming convention}}</span>
+                type: integer
+  </pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        parameters:
+          - in: body
+            name: body
+            required: true
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+        responses:
+          '200':
+            description: Success
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                user_name:
+                  type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR066: RequestBody and Responses schema property names must be compliant with the snake_case naming convention}}</span>
+                    type: string
+                  last_name:
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    userID: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR066: RequestBody and Responses schema property names must be compliant with the snake_case naming convention}}</span>
+                      type: integer
+                    user_name:
+                      type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  last_name:
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user_name:
+                      type: string
+</pre>

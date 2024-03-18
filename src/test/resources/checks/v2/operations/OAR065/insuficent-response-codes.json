@@ -1,0 +1,39 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/status": {
+      "delete": {
+        "summary": "Get API status",
+        "responses": {
+          "400": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/another": {
+      "delete": {
+        "summary": "Get another API status",
+        "responses": {
+          "400": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "delete": {
+        "summary": "Get all users",
+        "responses": {  # Noncompliant {{OAR065: Response code 200, 202, 204 must be defined}} 
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  }
+}

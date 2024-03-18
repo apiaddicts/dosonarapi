@@ -1,0 +1,13 @@
+{
+    "title": "OAR077 - ParametersInQuerySnakeCase - Todos los parámetros in query deben ser snake_case",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

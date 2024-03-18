@@ -1,0 +1,25 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /status:
+    get:
+      parameters:
+        - in: query
+          name: other
+          required: true # Noncompliant {{OAR060: All parameters in query must be defined as optional}}
+          schema:
+            type: array
+            items:
+              type: string
+        - in: query
+          name: $filter
+          required: true # Noncompliant {{OAR060: All parameters in query must be defined as optional}}
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        206:
+          description: Ok

@@ -1,0 +1,42 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Swagger Petstore"
+    },
+    "paths": {
+      "/user": {
+        "post": {
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "first_name": { "type": "string" }, # Noncompliant {{OAR067: RequestBody and Responses schema property names must be compliant with the camelCase naming convention}}
+                    "lastName": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "user_id": { "type": "integer" }, # Noncompliant {{OAR067: RequestBody and Responses schema property names must be compliant with the camelCase naming convention}}
+                      "userName": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

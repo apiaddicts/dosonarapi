@@ -1,0 +1,45 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/pets" : {
+      "get" : {
+        "requestBody" : {
+          "content" : {
+            "application" : { }, # Noncompliant {{OAR044: Declared media type range should conform to RFC7231}}
+            "text/*" : { }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "some operation",
+            "content" : {
+              "application" : { } # Noncompliant {{OAR044: Declared media type range should conform to RFC7231}}
+            }
+          }
+        },
+        "parameters" : [ {
+          "name" : "someParam",
+          "in" : "query",
+          "content" : {
+            "application" : { }, # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+            "text/plain" : { }
+          }
+        }, {
+          "name" : "otherParam",
+          "in" : "path"
+        } ]
+      },
+      "post" : {
+        "responses" : {
+          "200" : {
+            "description" : "some operation"
+          }
+        }
+      }
+    }
+  }
+}

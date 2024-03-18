@@ -18,9 +18,12 @@
           }
         }, {
           "in" : "query",
-          "name" : "$total",
+          "name" : "select",
           "schema": {
-            "type" : "boolean"
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           }
         } ],
         "responses" : {

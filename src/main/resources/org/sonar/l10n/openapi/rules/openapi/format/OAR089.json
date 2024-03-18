@@ -1,0 +1,13 @@
+{
+    "title": "OAR089 - RefRequestBody - The $ref of a request body must end with a corresponding suffix",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

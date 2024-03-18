@@ -1,20 +1,5 @@
 <p>Por razones de seguridad y como buena práctica de REST, el protocolo HTTPS es obligatorio.</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "schemes": [
-        "http"
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -25,21 +10,6 @@ schemes:
 paths: {}
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "schemes": [
-        "https"
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -50,23 +20,6 @@ schemes:
 paths: {}
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "servers": [
-        {
-            "url": "http://petstore.swagger.io/"
-        }
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
@@ -77,23 +30,6 @@ servers:
 paths: {}
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "servers": [
-        {
-            "url": "https://petstore.swagger.io/"
-        }
-    ], 
-    "paths": {}
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

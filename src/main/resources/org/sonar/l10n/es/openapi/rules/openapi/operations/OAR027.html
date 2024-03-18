@@ -1,0 +1,60 @@
+<p>Las respuestas de creación de una operación POST deben tener un encabezado de ubicación con la referencia al nuevo recurso.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+          headers:
+            Location:
+              type: string
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+</pre>

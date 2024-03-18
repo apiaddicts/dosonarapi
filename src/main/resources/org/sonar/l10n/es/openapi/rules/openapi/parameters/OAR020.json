@@ -1,5 +1,5 @@
 {
-  "title": "OAR020 - ExpandParameter - $expand se debe definir como parámetro en esta operación",
+  "title": "OAR020 - ExpandParameter - $expand debe definirse como un parámetro no requerido en esta operación",
   "type": "BUG",
   "status": "ready",
   "remediation": {

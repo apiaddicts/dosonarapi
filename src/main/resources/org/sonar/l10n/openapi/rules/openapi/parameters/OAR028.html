@@ -1,170 +1,101 @@
-<p>In "get" operations, the $filter parameter, which allows to indicate filters, must be defined as a non-required parameter.</p>
+<p>The chosen parameter must be defined in this operation. By default, $filter</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-swagger: "2.0"
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      responses:
-        200:
-          description: Ok
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters: 
+          - in: query
+            name: other <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}</span>
+            type: array
+            items:
+              type: string
+          - in: query
+            name: hola <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}</span>
+            type: array
+            items:
+              type: string
+        responses:
+          206:
+            description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$filter", 
-                        "required": false, 
-                        "type": "object"
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-swagger: "2.0"
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $filter
-          required: false
-          type: object
-      responses:
-        200:
-          description: Ok
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: $filter
+            type: array
+            items:
+              type: string
+          - in: query
+            name: $filter
+            type: array
+            items:
+              type: string
+        responses:
+          206:
+            description: Ok
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-openapi: 3.0.1
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      responses:
-        200:
-          description: Ok
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters: 
+          - in: query
+            name: other <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}</span>
+            schema:
+              type: array
+              items:
+                type: string
+          - in: query
+            name: select <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}</span>
+            schema:
+              type: array
+              items:
+                type: string
+        responses:
+          206:
+            description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
 <pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "query", 
-                        "name": "$filter", 
-                        "required": false, 
-                        "schema": {
-                            "type": "object"
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
-<pre>
-openapi: 3.0.1
-info:
-  title: Swagger Petstore
-  version: 1.0.0
-paths:
-  /pets:
-    get:
-      parameters:
-        - in: query
-          name: $filter
-          required: false
-          schema:
-            type: object
-      responses:
-        200:
-          description: Ok
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /pets:
+      get:
+        parameters:
+          - in: query
+            name: $filter
+            schema:
+              type: array
+              items:
+                type: string
+          - in: query
+            name: $filter
+            schema:
+              type: array
+              items:
+                type: string
+        responses:
+          206:
+            description: Ok
 </pre>

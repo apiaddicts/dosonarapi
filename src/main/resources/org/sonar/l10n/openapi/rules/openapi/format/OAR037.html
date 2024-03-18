@@ -1,39 +1,5 @@
 <p>A string type with invalid format or without format may cause developers to use the wrong variable types in the API implementation.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "type": "object", 
-                                "properties": {
-                                    "date": {
-                                        "type": "string", 
-                                        "format": "dd/mm/yyyy"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -51,44 +17,10 @@ paths:
               type: object
               properties:
                 date:
-                  type: string
+                  type: string <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR037: String types requires a valid format}}</span>
                   format: 'dd/mm/yyyy'
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "type": "object", 
-                                "properties": {
-                                    "date": {
-                                        "type": "string", 
-                                        "format": "date"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -110,44 +42,6 @@ paths:
                   format: date
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array", 
-                                    "items": {
-                                        "type": "object", 
-                                        "properties": {
-                                            "date": {
-                                                "type": "string", 
-                                                "format": "dd/mm/yyyy"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:
@@ -167,48 +61,10 @@ paths:
                   type: object
                   properties:
                     date:
-                      type: string
+                      type: string <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR037: String types requires a valid format}}</span>
                       format: dd/mm/yyyy
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array", 
-                                    "items": {
-                                        "type": "object", 
-                                        "properties": {
-                                            "date": {
-                                                "type": "string", 
-                                                "format": "date"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:

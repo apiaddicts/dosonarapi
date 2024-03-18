@@ -4,7 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.rule.Severity;
 import org.sonar.api.rules.RuleType;
+import org.sonar.api.server.rule.RuleParamType;
 import org.sonar.samples.openapi.BaseCheckTest;
+
+import apiquality.sonar.openapi.checks.format.OAR037StringFormatCheck;
 
 public class OAR037StringFormatCheckTest extends BaseCheckTest {
 
@@ -44,6 +47,12 @@ public class OAR037StringFormatCheckTest extends BaseCheckTest {
     @Test
     public void verifyInV3With$ref() {
         verifyV3("with-$ref");
+    }
+
+    @Override
+    public void verifyParameters() {
+        assertNumberOfParameters(1);
+        assertParameterProperties("formats-allowed", "date,date-time,password,byte,binary,email,uuid,uri,hostname,ipv4,ipv6,HEX,HEX(16)", RuleParamType.STRING);
     }
 
     @Override

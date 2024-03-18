@@ -1,0 +1,39 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+      "version" : "1.0.0",
+      "title" : "Swagger Petstore"
+    },
+    "paths" : {
+      "/status" : {
+        "get" : {
+          "parameters" : [ {
+            "in" : "query",
+            "name" : "other",
+            "required": false,
+            "schema": {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }, {
+            "in" : "query",
+            "name" : "$filter",
+            "required": false,
+            "schema": {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          } ],
+          "responses" : {
+            "206" : {
+              "description" : "Ok"
+            }
+          }
+        }
+      }
+    }
+  }

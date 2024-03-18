@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  version: 1.0.0
+host: api.example.com
+schemes:
+  - https
+
+# Definición de seguridad global
+security:
+  - apiKeyHeader: []
+
+paths:
+  /items:
+    get:  # Verb 'get' sin definición de seguridad local
+      summary: Get all items
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Item'
+    post: # Verb 'post' sin definición de seguridad local
+      summary: Create an item
+      parameters:
+        - name: item
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Item'
+      responses:
+        201:
+          description: Item created
+
+definitions:
+  Item:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+
+securityDefinitions:
+  apiKeyHeader:
+    type: apiKey
+    in: header
+    name: X-API-Key

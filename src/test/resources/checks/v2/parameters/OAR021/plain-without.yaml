@@ -3,16 +3,16 @@ info:
   version: 1.0.0
   title: Swagger Petstore
 paths:
-  /pets:
-    get:
-      parameters: # Noncompliant {{OAR021: $exclude must be defined as a parameter in this operation}}
+  /examples:
+    get: # Noncompliant {{OAR021: $exclude must be defined as a parameter in this operation}}
+      parameters: 
         - in: query
-          name: other
+          name: other 
           type: array
           items:
             type: string
         - in: query
-          name: exclude
+          name: hola 
           type: array
           items:
             type: string

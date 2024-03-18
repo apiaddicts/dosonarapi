@@ -1,0 +1,13 @@
+{
+  "title": "OAR038 - StandardCreateResponse - Creation response schema must be compliant with the standard",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

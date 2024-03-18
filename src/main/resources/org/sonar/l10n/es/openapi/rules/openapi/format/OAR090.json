@@ -1,0 +1,13 @@
+{
+    "title": "OAR090 - RefResponse - El $ref de un response debe terminar con el sufijo correspondiente",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

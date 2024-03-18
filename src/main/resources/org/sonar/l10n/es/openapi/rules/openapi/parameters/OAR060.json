@@ -1,0 +1,13 @@
+{
+    "title": "OAR060 - QueryParametersOptional - Todos los parámetros en query deben definirse como opcionales",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "parameters"
+    ],
+    "defaultSeverity": "MINOR"
+  }

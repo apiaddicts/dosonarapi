@@ -1,39 +1,5 @@
 <p>Una propiedad de tipo string con formato no válido puede provocar una implementación incorrecta de la API.</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "type": "object", 
-                                "properties": {
-                                    "date": {
-                                        "type": "string", 
-                                        "format": "dd/mm/yyyy"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -55,40 +21,6 @@ paths:
                   format: 'dd/mm/yyyy'
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "schema": {
-                            "type": "array", 
-                            "items": {
-                                "type": "object", 
-                                "properties": {
-                                    "date": {
-                                        "type": "string", 
-                                        "format": "date"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -110,44 +42,6 @@ paths:
                   format: date
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array", 
-                                    "items": {
-                                        "type": "object", 
-                                        "properties": {
-                                            "date": {
-                                                "type": "string", 
-                                                "format": "dd/mm/yyyy"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:
@@ -171,44 +65,6 @@ paths:
                       format: dd/mm/yyyy
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/invoices": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Invoices.", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array", 
-                                    "items": {
-                                        "type": "object", 
-                                        "properties": {
-                                            "date": {
-                                                "type": "string", 
-                                                "format": "date"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:

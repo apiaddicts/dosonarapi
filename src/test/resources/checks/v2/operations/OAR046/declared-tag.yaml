@@ -1,0 +1,17 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: used-tag
+  description: a tag referenced in the operations
+paths:
+  /pets:
+    get:
+      tags:
+        - used-tag
+      responses: {}
+    post:                 # Noncompliant {{OAR046: Associate a tag to this operation}}
+      responses:
+        default:
+          description: the default response

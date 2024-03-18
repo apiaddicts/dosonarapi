@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /user:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name: # Noncompliant {{OAR067: RequestBody and Responses schema property names must be compliant with the camelCase naming convention}}
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id: # Noncompliant {{OAR067: RequestBody and Responses schema property names must be compliant with the camelCase naming convention}}
+                    type: integer
+                  userName:
+                    type: string

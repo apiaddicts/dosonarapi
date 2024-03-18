@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore (GETs only)"
+  },
+  "paths": {
+    "/resources": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/resources/{r_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/resources/get": {
+      "get": {  # Noncompliant {{OAR103: Operation not recommended for resource path: resources/get}}
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/resources/delete": {
+      "get": {  # Noncompliant {{OAR103: Operation not recommended for resource path: resources/delete}}
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/resources/{r_id}/other": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/resources/me": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}

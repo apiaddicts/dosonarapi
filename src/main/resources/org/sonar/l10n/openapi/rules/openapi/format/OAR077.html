@@ -1,0 +1,73 @@
+<p>All parameters in query must be snake_case</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: "1.0.0"
+      title: "API que no cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              type: string
+            - name: userFirstName <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR077: All parameters in query must be snake_case}}</span>
+              in: query
+              type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: "1.0.0"
+      title: "API que cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              type: string
+            - name: user_first_name
+              in: query
+              type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: "1.0.0"
+      title: "API que no cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              schema:
+                type: string
+            - name: userFirstName <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR077: All parameters in query must be snake_case}}</span>
+              in: query
+              schema:
+                type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: "1.0.0"
+      title: "API que cumple"
+    paths:
+      /usuarios:
+        get:
+          parameters:
+            - name: username
+              in: query
+              schema:
+                type: string
+            - name: user_first_name
+              in: query
+              schema:
+                type: string
+</pre>

@@ -1,0 +1,13 @@
+{
+  "title": "OAR051 - DescriptionDiffersSummary - Operation description must differ from its summary.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10mn"
+  },
+  "tags": [
+    "format"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

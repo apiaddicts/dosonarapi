@@ -1,0 +1,21 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post:
+      summary: create a pet
+      description: Create a new pet. The pet type is assigned a new unique ID, and can then be referenced in other
+                   operations.
+      responses:
+        default:
+          description: the default response
+    get:
+      summary: list all pets
+      # Noncompliant@+1 {{OAR051: Description must differ from summary}}
+      description: List all pets
+#     ^^^^^^^^^^^
+      responses:
+        default:
+          description: the default response

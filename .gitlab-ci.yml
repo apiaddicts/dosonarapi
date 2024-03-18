@@ -1,0 +1,96 @@
+variables:
+  MAVEN_CLI_OPTS: "-s settings.xml --batch-mode"
+  TAG_NAME: $CI_COMMIT_TAG
+
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+##BUILD ARTIFACT
+maven-build:
+  stage: build
+  image: maven:3-jdk-11
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+    - mvn $MAVEN_CLI_OPTS package
+  artifacts:
+    paths:
+      - target/*.jar
+  only:
+     refs:
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)$/
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)-dev$/
+
+##TEST ARTIFACT
+maven-test:
+  stage: test
+  image: maven:3-jdk-11
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+  only:
+     refs:
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)$/
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)-dev$/
+
+##PUBLISH ARTIFACT
+maven-publish:
+  stage: publish
+  image: maven:3-jdk-11
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+  only:
+     refs:
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)$/
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)-dev$/
+
+##DEPLOY DEVELOP ENVIRONMENT
+deploy:dev:
+  stage: deploy
+  image: ubuntu:latest
+  script:
+    - apt update -y  && apt upgrade -y
+    - apt install curl -y
+    - curl -LO https://dl.k8s.io/release/v1.24.8/bin/linux/amd64/kubectl
+    - chmod +x kubectl
+    - mkdir -p ~/.local/bin/kubectl
+    - mv ./kubectl ~/.local/bin/kubectl
+    - export KUBECONFIG=$KUBECONFIG
+    - apt install wget -y
+    - wget https://get.helm.sh/helm-v3.9.3-linux-amd64.tar.gz
+    - tar xvf helm-v3.9.3-linux-amd64.tar.gz
+    - mv linux-amd64/helm /usr/local/bin
+    - helm repo add sonarqube https://SonarSource.github.io/helm-chart-sonarqube
+    - helm repo update
+    - sed -i "s,plugin_version,${TAG_NAME},g" sonarqube/values-dev.yaml
+    - helm upgrade --install -n sonarqube-dev sonarqube-lts-dev sonarqube/sonarqube-lts --create-namespace -f sonarqube/values-dev.yaml
+  only:
+     refs:
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)-dev$/
+
+##DEPLOY PRODUCTION ENVIRONMENT
+deploy:pro:
+  stage: deploy
+  image: ubuntu:latest
+  script:
+    - apt update -y  && apt upgrade -y
+    - apt install curl -y
+    - curl -LO https://dl.k8s.io/release/v1.24.8/bin/linux/amd64/kubectl
+    - chmod +x kubectl
+    - mkdir -p ~/.local/bin/kubectl
+    - mv ./kubectl ~/.local/bin/kubectl
+    - export KUBECONFIG=$KUBECONFIG
+    - apt install wget -y
+    - wget https://get.helm.sh/helm-v3.9.3-linux-amd64.tar.gz
+    - tar xvf helm-v3.9.3-linux-amd64.tar.gz
+    - mv linux-amd64/helm /usr/local/bin
+    - helm repo add sonarqube https://SonarSource.github.io/helm-chart-sonarqube
+    - helm repo update
+    - sed -i "s,plugin_version,${TAG_NAME},g" sonarqube/values.yaml
+    - helm upgrade --install -n sonarqube sonarqube-lts sonarqube/sonarqube-lts --create-namespace -f sonarqube/values.yaml
+  needs:
+    - "maven-publish"
+  only:
+     refs:
+      - /^[0-9]+(\.[0-9]+)+(\.[0-9]+)$/

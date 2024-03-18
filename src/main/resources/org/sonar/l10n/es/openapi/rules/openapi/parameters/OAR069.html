@@ -1,0 +1,103 @@
+<p>Todos los parámetros en query deben definirse como opcionales</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      parameters:
+        - name: param1
+          in: query
+          required: false
+          type: string
+      responses:
+        200:
+          description: A list of items
+          schema:
+            type: array
+            items:
+              type: string
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /items:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: query
+            required: false
+            type: string
+        responses:
+          200:
+            description: A list of items
+            schema:
+              type: array
+              items:
+                type: string
+          400:
+            description: Bad Request
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      parameters:
+        - name: param1
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /items:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: query
+            required: false
+            schema:
+              type: string
+        responses:
+          200:
+            description: A list of items
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string
+          400:
+            description: Bad Request
+</pre>

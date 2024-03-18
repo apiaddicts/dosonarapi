@@ -2,28 +2,6 @@
 <p>For <b>OpenAPI 2</b> specify at least a MIME Type understood by the API in the "consumes" keyword is mandatory.</p>
 <p>For <b>OpenAPI 3</b> specify at least a Media Type in the content of the response body is mandatory.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -31,37 +9,12 @@ info:
   version: "1.0"
 paths:
   /pets:
-    put:
+    put: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR007: Section produces is mandatory}}</span>
       responses: 
         200:
           description: OK
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "produces": [
-        "application/json"
-    ], 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -77,31 +30,6 @@ paths:
           description: OK
 </pre>
 <p>Or</p>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "put": {
-                "produces": [
-                    "application/json"
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -117,28 +45,6 @@ paths:
           description: OK
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:
@@ -146,41 +52,12 @@ info:
   version: "1.0"
 paths:
   /pets:
-    post:
+    post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR007: Section produces is mandatory}}</span>
       responses:
         200:
           description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Ok", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:

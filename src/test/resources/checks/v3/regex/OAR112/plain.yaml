@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Ejemplo de API
+  version: 1.0.0
+  description: Una API de ejemplo para ilustrar la estructura de OpenAPI.
+servers:
+  - url: https://api.ejemplo.com/v1
+paths:
+  /usuarios:
+    get:
+      summary: Obtiene una lista de usuarios
+      description: Retorna una lista completa de usuarios registrados.
+      operationId: getUsuarios
+      tags:
+        - Usuarios
+      parameters:
+        - name: "page"
+          in: "query"
+          description: "Número de página para la paginación" 
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        '200':
+          description: ana lista de usuarios se retorna en caso de éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+        '404':
+          description: No se encontraron usuarios.
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: El ID único del usuario.
+        nombre:
+          type: string
+          description: El nombre del usuario.

@@ -1,0 +1,13 @@
+{
+    "title": "OAR070 - BrokenAccessControl - Parameters in path shouldn't be numeric",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "owasp"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

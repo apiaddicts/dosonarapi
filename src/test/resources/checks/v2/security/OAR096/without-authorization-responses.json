@@ -1,0 +1,82 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "securityDefinitions": {
+    "BasicAuth": {
+      "type": "basic"
+    },
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key"
+    },
+    "OAuth2": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://example.com/oauth/authorize",
+      "tokenUrl": "https://example.com/oauth/token",
+      "scopes": {
+        "read": "Grants read access",
+        "write": "Grants write access",
+        "admin": "Grants read and write access to administrative information"
+      }
+    }
+  },
+  "paths": {
+    "/with-auth-and-header": {
+      "get": {
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {
+            "OAuth2": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "responses": { # Noncompliant {{OAR096: Response code 403 must be defined for operations with security schemes defined}} 
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/with-header": {
+      "get": {
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/without": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}

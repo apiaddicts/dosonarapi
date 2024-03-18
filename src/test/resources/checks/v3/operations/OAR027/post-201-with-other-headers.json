@@ -1,0 +1,25 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/pets/" : {
+      "post" : {
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "headers" : { # Noncompliant {{OAR027: Location header is required in responses with code 201 from POST operations}}
+              "X-Location" : {
+                "schema": {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

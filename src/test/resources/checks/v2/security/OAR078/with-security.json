@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Sample API"
+    },
+    "paths": {
+      "/users": {
+        "get": {
+          "security": [
+            {
+              "apiKey": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/products": {
+        "post": {
+          "security": [
+            {
+              "apiKey": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/orders": {
+        "put": {
+          "security": [
+            {
+              "apiKey": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/invoices": {
+        "delete": {
+          "security": [
+            {
+              "apiKey": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "securityDefinitions": {
+      "apiKey": {
+        "type": "apiKey",
+        "name": "X-API-Key",
+        "in": "header"
+      }
+    }
+  }

@@ -1,0 +1,13 @@
+{
+    "title": "OAR066 - SnakeCaseNamingConvention - Los nombres de las propiedades del esquema RequestBody y Responses deben cumplir la convención de nomenclatura snake_case",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "10min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

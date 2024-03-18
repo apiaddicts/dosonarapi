@@ -1,0 +1,21 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /endpoint:
+    post:
+      responses:
+        201:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        204:
+          description: No content
+
+components:
+  schemas:
+    response: # Noncompliant {{OAR038: 'data' property is missing}}
+      type: object

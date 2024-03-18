@@ -1,0 +1,13 @@
+{
+    "title": "OAR079 - PathParameter404 - Los parámetros in PATH deben tener una respuesta Not Found (404)",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MINOR"
+}

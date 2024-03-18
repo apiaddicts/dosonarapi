@@ -1,0 +1,28 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /user:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              first_name: # Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}
+                type: string
+              LastName:
+                type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            properties:
+              user_id: # Noncompliant {{OAR068: RequestBody and Responses schema property names must be compliant with the PascalCase naming convention}}
+                type: integer
+              UserName:
+                type: string

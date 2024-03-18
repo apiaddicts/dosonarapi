@@ -1,0 +1,231 @@
+<p>Una definición de API con RBAC debe tener en cuenta las respuestas de seguridad.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
+  OAuth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://example.com/oauth/authorize
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      read: Grants read access
+      write: Grants write access
+      admin: Grants read and write access to administrative information
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [read, write]
+      responses:
+        200:
+          description: Ok
+        default:
+          description: Default
+  /with-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          type: string
+      responses:
+        200:
+          description: Ok
+        default:
+          description: Default
+  /without:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
+  OAuth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://example.com/oauth/authorize
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      read: Grants read access
+      write: Grants write access
+      admin: Grants read and write access to administrative information
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [read, write]
+      responses:
+        200:
+          description: Ok
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        429:
+          description: Forbidden
+  /with-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: Unauthorized
+        429:
+          description: Unauthorized
+  /without:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2:
+          - read
+          - write
+      responses:
+        default:
+          description: Default
+  /with-header:
+    parameters:
+      - in: header
+        name: x-api-key
+        schema:
+          type: string
+    get:
+      responses:
+        200:
+          description: Ok
+        default:
+          description: Default
+  /without:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2:
+          - read
+          - write
+      responses:
+        200:
+          description: Ok
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        429:
+          description: Forbidden
+  /with-header:
+    parameters:
+      - in: header
+        name: x-api-key
+        schema:
+          type: string
+    get:
+      responses:
+        200:
+          description: Ok
+        401:
+          description: Unauthorized
+        429:
+          description: Unauthorized
+  /without:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>

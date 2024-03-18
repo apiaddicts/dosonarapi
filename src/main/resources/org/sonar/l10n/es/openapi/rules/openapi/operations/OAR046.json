@@ -1,0 +1,13 @@
+{
+  "title": "OAR046 - DeclaredTag - Una operación debe de tener como mínimo un tag",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5mn"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

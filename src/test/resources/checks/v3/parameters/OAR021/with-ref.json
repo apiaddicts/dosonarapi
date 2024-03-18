@@ -1,0 +1,37 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "components": {
+    "parameters": {
+      "selectParameter": {
+        "in": "query",
+        "name": "$exclude",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/examples": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/selectParameter"
+          }
+        ],
+        "responses": {
+          "206": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}

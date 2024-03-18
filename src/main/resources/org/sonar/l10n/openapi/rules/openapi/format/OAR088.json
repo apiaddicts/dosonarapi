@@ -1,0 +1,13 @@
+{
+    "title": "OAR088 - RefParam - The $ref of a parameter must end with a corresponding suffix",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

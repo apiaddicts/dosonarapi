@@ -1,0 +1,579 @@
+openapi: 3.0.1
+info:
+  title: Sample-API_efc2b9f76813_V
+  description: API de ejemplo para pruebas
+  contact:
+    name: Nombre del Contacto
+    email: contact@mail.com
+  version: 1.0.0
+servers:
+  - url: https://api.example.es/api-sample/v1
+paths:
+  /datos-usuarios:
+    get:
+      summary: Listado de usuarios
+      description: Método que permite obtener un listado con datos básicos de un usuario
+      parameters:
+        - name: desde
+          in: query
+          schema:
+            type: string
+            format: date
+          required: false
+        - name: hasta
+          in: query
+          schema:
+            type: string
+            format: date
+          required: false
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/datosUsuario'
+        '400':
+          description: Bad Request
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '400'
+                  message: Bad Request
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10004'
+                  errors:
+                    - code: '101'
+                      message: Invalid format
+                      location: desde
+        '429':
+          description: Too many requests
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '429'
+                  message: Too many requests
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10005'
+                  errors:
+                    - code: '105'
+                      message: >-
+                        The user has sent too many requests in a given amount of
+                        time
+        default:
+          description: Server Error (50X)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '500'
+                  message: Internal server error
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/5008Aw
+                  operationId: '10004'
+                  errors:
+                    - code: '501'
+                      message: Internal server error
+    post:
+      summary: Alta de los datos de un usuario
+      description: Método que permite dar de alta los datos básicos de un usuario
+      requestBody: # Noncompliant {{OAR092: Request body must contain only references ($ref)}}
+        description: Datos del usuario
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/datosUsuario'
+      responses:
+        '201':
+          description: OK
+          headers:
+            location:
+              description: RFC 7231 - The new resource which was created by the request.
+              schema:
+                type: string
+                example: /datos-usuarios/a2649c29-48c6-4c48-b64d-0455346efbbd
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datosUsuario'
+        '400':
+          description: Bad Request
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '400'
+                  message: Bad Request
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10004'
+                  errors:
+                    - code: '101'
+                      message: Invalid format
+                      location: emailUsuario
+        '429':
+          description: Too many requests
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '429'
+                  message: Too many requests
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10005'
+                  errors:
+                    - code: '105'
+                      message: >-
+                        The user has sent too many requests in a given amount of
+                        time
+        default:
+          description: Server Error (50X)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '500'
+                  message: Internal server error
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/5008Aw
+                  operationId: '10004'
+                  errors:
+                    - code: '501'
+                      message: Internal server error
+      x-codegen-request-body-name: body
+  /datos-usuarios/{idUsuario}:
+    get:
+      summary: Recuperación de los datos de un usuario por su id
+      description: >-
+        Método que permite recuperar la información básica de un usuario por su
+        id
+      parameters:
+        - name: idUsuario
+          in: path
+          description: Identificador del usuario
+          required: true
+          schema:
+            type: string
+            minLength: 5
+            maxLength: 255
+            format: ^[0-9]*$
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datosUsuario'
+        '400':
+          description: Bad Request
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '400'
+                  message: Bad Request
+                  path: /datos-usuario/0
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10001'
+                  errors:
+                    - code: '101'
+                      message: Invalid format
+                      location: idUsuario
+        '404':
+          description: Not found (404)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '404'
+                  message: Not found
+                  path: /datos-usuario/0
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10002'
+                  errors:
+                    - code: '102'
+                      message: Entity not found
+                      location: idUsuario
+        '429':
+          description: Too many requests
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '429'
+                  message: Too many requests
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10005'
+                  errors:
+                    - code: '105'
+                      message: >-
+                        The user has sent too many requests in a given amount of
+                        time
+        default:
+          description: Server Error (50X)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+    put:
+      summary: Modificación de los datos de un usuario
+      description: Método que permite modificar los datos básicos de un usuario
+      parameters:
+        - name: idUsuario
+          in: path
+          description: Identificador del usuario
+          required: true
+          schema:
+            type: string
+            minLength: 5
+            maxLength: 255
+            format: ^[0-9]*$
+      requestBody: # Noncompliant {{OAR092: Request body must contain only references ($ref)}}
+        description: Datos del usuario
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/datosUsuario'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datosUsuario'
+        '400':
+          description: Bad Request
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '400'
+                  message: Bad Request
+                  path: /datos-usuario/0
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10002'
+                  errors:
+                    - code: '101'
+                      message: Invalid format
+                      location: idUsuario
+        '404':
+          description: Not found (404)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+        '429':
+          description: Too many requests
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '429'
+                  message: Too many requests
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10005'
+                  errors:
+                    - code: '105'
+                      message: >-
+                        The user has sent too many requests in a given amount of
+                        time
+        default:
+          description: Server Error (50X)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+      x-codegen-request-body-name: body
+    delete:
+      summary: Borrado de los datos de un usuario
+      description: Método que permite borrar los datos básicos de un usuario
+      parameters:
+        - name: idUsuario
+          in: path
+          description: Identificador del usuario
+          required: true
+          schema:
+            type: string
+            minLength: 5
+            maxLength: 255
+            format: ^[0-9]*$
+      responses:
+        '204':
+          description: No content
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '400'
+                  message: Bad Request
+                  path: /datos-usuario/0
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10003'
+                  errors:
+                    - code: '101'
+                      message: Invalid format
+                      location: idUsuario
+        '404':
+          description: Not found (404)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+        '429':
+          description: Too many requests
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+              example:
+                error:
+                  status: '429'
+                  message: Too many requests
+                  path: /datos-usuario
+                  type: https://docs.example.es/x/A1D8Aw
+                  operationId: '10005'
+                  errors:
+                    - code: '105'
+                      message: >-
+                        The user has sent too many requests in a given amount of
+                        time
+        default:
+          description: Server Error (50X)
+          headers:
+            X-Correlation-Id:
+              description: Cabecera 'X-Correlation-Id'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+components:
+  schemas:
+    datosUsuario:
+      title: datosUsuario
+      type: object
+      required:
+        - nombreUsuario
+        - emailUsuario
+      properties:
+        idUsuario:
+          type: string
+          description: ID del usuario
+          example: '12'
+          readOnly: true
+        nombreUsuario:
+          type: string
+          description: Nombre del usuario
+          minLength: 5
+          maxLength: 255
+          example: Pedro
+        emailUsuario:
+          type: string
+          description: Email del usuario
+          minLength: 5
+          maxLength: 255
+          example: pedro@mail.com
+        fechaNacimiento:
+          type: string
+          description: Fecha de nacimiento
+          format: date
+          example: 1980-10-11T00:00:00.000Z
+        alta:
+          type: string
+          description: Fecha de alta
+          format: date-time
+          example: 2022-05-10T12:00:27.870Z
+      description: Datos básicos de un usuario
+    errorMessage:
+      required:
+        - message
+        - status
+      type: object
+      properties:
+        status:
+          type: string
+          description: Especifica el status code HTTP al que se traducirá la excepción.
+        message:
+          type: string
+          description: Mensaje descriptivo del error.
+        path:
+          type: string
+          description: URL path de la petición que originó el error.
+        type:
+          type: string
+          description: URL que apunta a una descripción de los códigos de error.
+        operationId:
+          type: string
+          description: Id de negocio de la operación realizada.
+        errors:
+          type: array
+          description: >-
+            Listado de suberrores usado para dar información más detallada, como
+            en el caso de errores de validación.
+          items:
+            $ref: '#/components/schemas/errors'
+      description: Datamodel refleja el formato de respuesta de error
+    errors:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detalle del suberror.
+        code:
+          type: string
+          description: Código de error (en errores de validación indica el tipo de error).
+        location:
+          type: string
+          description: >-
+            Localización del error (en errores de validación indica el campo
+            donde se produce el error).
+      description: >-
+        Listado de suberrores usado para dar información más detallada, como en
+        el caso de errores de validación.

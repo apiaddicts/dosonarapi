@@ -1,28 +1,5 @@
 <p>A scope name non compliant with the standard may cause problems at application level.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -37,29 +14,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "apfc_sc_read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -74,29 +28,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
@@ -111,29 +42,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "apfc_sc_read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

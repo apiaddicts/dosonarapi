@@ -1,0 +1,13 @@
+{
+  "title": "OAR029 - StandardResponse - El esquema de la respuesta debe cumplir con el estandar",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "4h"
+  },
+  "tags": [
+    "schemas"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

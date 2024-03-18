@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/one": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four": { # Noncompliant {{OAR014: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}": { # Noncompliant {{OAR014: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five": { # Noncompliant {{OAR014: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}": { # Noncompliant {{OAR014: Resources depth level should be smaller}}
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}/six": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/one/{one}/two/{two}/three/{three}/four/{four}/five/{five}/six/{six}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}

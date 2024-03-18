@@ -1,0 +1,13 @@
+{
+  "title": "OAR027 - PostResponseLocationHeader - La cabecera Location es obligatoria en respuestas con código 201 de operaciones POST",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

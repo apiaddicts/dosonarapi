@@ -1,0 +1,101 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/endpoint" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "content": {
+              "application/json": {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "No content"
+          },
+          "400" : {
+            "description" : "Error",
+            "content": {
+              "application/json": {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unknown"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas" : {
+      "response" : { # Noncompliant {{OAR029: 'data' property is missing}}
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/standard_response"
+        } ],
+        "properties" : {
+          "value" : {
+            "type" : "object",
+            "properties" : {
+              "tipos" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "standard_response" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "object",
+            "properties" : {
+              "http_status" : {
+                "type" : "string"
+              },
+              "code" : {
+                "type" : "integer"
+              },
+              "errors" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "internal_code" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "http_status", "code", "description", "errors" ]
+          }
+        }
+      }
+    }
+  }
+}

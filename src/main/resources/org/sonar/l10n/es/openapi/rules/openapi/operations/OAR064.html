@@ -1,0 +1,53 @@
+<p>Los códigos de respuesta en las operaciones PATCH deben definirse de acuerdo con el estándar</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    patch:
+      responses:
+        400:
+          description: Bad request
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    patch:
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    patch:
+      responses:
+        400:
+          description: Bad request
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    patch:
+      responses:
+    200:
+      description: OK
+</pre>

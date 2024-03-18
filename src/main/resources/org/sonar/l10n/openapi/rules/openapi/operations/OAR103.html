@@ -1,0 +1,108 @@
+<p>in the verb Get, some path structures are not encouraged. This can be a hint of a design flaw.</p>
+<h2>Forbidden paths by default</h2>
+<table>
+  <thead>
+    <tr>
+      <th>VERB</th>
+      <th>STRUCTURE</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>GET</td>
+    <td>/resources/get</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/resources/delete</td>
+  </tr>
+  </tbody>
+</table>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /resources/get:
+    get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR103: Operation not recommended for resource path: GET /resources/get}}</span>
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        type: integer
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      title: Swagger Petstore
+      version: 1.0.0
+    paths:
+      /resources:
+        get: 
+          parameters:
+          - name: customerId
+            in: path
+            required: true
+            type: integer
+          - name: body
+            in: body
+            required: true
+            schema:
+              type: object
+          responses:
+            200:
+              description: Ok
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /resources/delete:
+    get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR103: Operation not recommended for resource path: GET /resources/delete}}</span>
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /resources/{r_id}/other:
+    get:
+      responses:
+        '200':
+          description: Ok
+</pre>

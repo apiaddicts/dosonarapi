@@ -1,0 +1,13 @@
+{
+    "title": "OAR096 - ForbiddenResponses - When defining security schemes, forbidden response codes must be defined",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "1h"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

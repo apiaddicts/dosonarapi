@@ -1,0 +1,41 @@
+<p>Base path must must be compliant with the standard</p>
+<p>The first part of base path corresponds to the name of the API, starting with the prefix "api-" and must have at least one character: /api-xxxx</p>
+<p>The second part of base path corresponds to the version of the API and must start with the prefix "v" continuing with the version number in integer format: /v1</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+basePath: /seguros <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR042: API name must start with prefix 'api-'}}</span>
+paths: {}
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+basePath: /api-seguros/v1
+paths: {}
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+servers:
+    - url: https://petstore.swagger.io/seguros/version/1 <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR042: API name must start with prefix 'api-'}}</span>
+paths: {}
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+servers:
+    - url: https://petstore.swagger.io/api-seguros/v1
+paths: {}
+</pre>

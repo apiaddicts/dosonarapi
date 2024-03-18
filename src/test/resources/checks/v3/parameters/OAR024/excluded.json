@@ -18,10 +18,12 @@
           }
         }, {
           "in" : "query",
-          "name" : "$start",
+          "name" : "select",
           "schema": {
-            "type" : "integer",
-            "format" : "int64"
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           }
         } ],
         "responses" : {

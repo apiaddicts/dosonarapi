@@ -1,31 +1,5 @@
 <p>A wrong scope may cause problems to import the API definition into WSO2 or allow all users to call the endpoint.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "view"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 x-wso2-security:
@@ -41,32 +15,6 @@ paths:
       x-scope: view
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "read"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 x-wso2-security:
@@ -82,32 +30,6 @@ paths:
       x-scope: read
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "view"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 x-wso2-security:
@@ -123,32 +45,6 @@ paths:
       x-scope: view
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "read"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 x-wso2-security:

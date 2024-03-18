@@ -1,0 +1,13 @@
+{
+    "title": "OAR069 - PathParamAndQueryCheck - Cualquier parámetro in PATH o QUERY debe tener una respuesta Bad Request (400).",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "parameters"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

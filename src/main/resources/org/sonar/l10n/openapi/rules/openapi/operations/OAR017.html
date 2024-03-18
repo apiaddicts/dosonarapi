@@ -1,0 +1,114 @@
+<p>It is validated that each route alternates its parts between static and variable parts, starting with the static parts.</p>
+<p>Examples:</p>
+<ul>
+<li>/{id} -&gt; Error</li>
+<li>/facturas/{id}/{lineId} -&gt; Error</li>
+<li>/facturas/{id} -&gt; Ok</li>
+<li>/facturas/get -&gt; Ok</li>
+<li>/facturas/{id}/lineas/{lineId} -&gt; Ok</li>
+<li>/facturas/{id}/lineas/get -&gt; Ok</li>
+</ul>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /customers/{customerId}/{invoiceId}:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Ok
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+        - in: path
+          name: invoiceId
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /customers/{customerId}/{invoiceId}:
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /customers/{customerId}/invoices:
+    get:
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Ok
+  /invoices/{invoiceId}:
+    get:
+      parameters:
+      - name: invoiceId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Ok
+</pre>

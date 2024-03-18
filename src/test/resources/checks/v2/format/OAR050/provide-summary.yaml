@@ -1,0 +1,15 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post:             # Noncompliant {{OAR050: Provide a summary for each operation}}
+      responses:
+        default:
+          description: the default response
+    get:
+      summary: list all pets
+      responses:
+        default:
+          description: the default response

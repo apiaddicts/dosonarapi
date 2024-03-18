@@ -1,0 +1,14 @@
+{
+    "title": "OAR043 - ParsingError - El archivo no puede ser analizado",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "BLOCKER"
+  }
+  

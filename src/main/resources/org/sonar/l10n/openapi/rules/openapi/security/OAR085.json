@@ -1,0 +1,13 @@
+{
+    "title": "OAR085 - OpenAPIVersion - The OpenAPI version should be one of the allowed by the organization",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MINOR"
+  }

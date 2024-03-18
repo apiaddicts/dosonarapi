@@ -1,0 +1,93 @@
+<p>Una respuesta de creación de recurso debe contar con al menos un atributo.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /endpoint:
+    post:
+      responses:
+        201:
+          description: Ok
+          schema:
+            type: object
+        204:
+          description: No content
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /endpoint:
+    post:
+      responses:
+        201:
+          description: Ok
+          schema:
+            $ref: '#/definitions/response'
+        204:
+          description: No content
+
+definitions:
+  response:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: string
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /endpoint:
+    post:
+      responses:
+        201:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+        204:
+          description: No content
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /endpoint:
+    post:
+      responses:
+        201:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        204:
+          description: No content
+components:
+  schemas:
+    response:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+</pre>

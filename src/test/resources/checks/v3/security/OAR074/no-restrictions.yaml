@@ -1,0 +1,20 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: My API
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      parameters:
+        - name: param1
+          in: query
+          schema:
+            type: integer # Noncompliant {{OAR074: Numeric parameters should have minimum, maximum, or format restriction}}
+        - name: param2
+          in: query
+          schema:
+            type: number  # Noncompliant {{OAR074: Numeric parameters should have minimum, maximum, or format restriction}}
+      responses:
+        200:
+          description: A list of items

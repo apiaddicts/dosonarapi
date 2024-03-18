@@ -1,0 +1,42 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Swagger Petstore"
+    },
+    "paths": {
+      "/items/{itemId}": {
+        "get": {
+          "summary": "Get item by ID",
+          "parameters": [
+            {
+              "name": "itemId",
+              "in": "path",
+              "description": "ID of the item",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Item details",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "error"
+            }
+          }
+        }
+      }
+    }
+  }

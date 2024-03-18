@@ -1,0 +1,115 @@
+<p>Los nombres de las propiedades del esquema RequestBody y Responses deben cumplir la convención de nomenclatura snake_case</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /user:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              firstName: 
+                type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            properties:
+              userId:
+                type: integer
+  </pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        parameters:
+          - in: body
+            name: body
+            required: true
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+        responses:
+          '200':
+            description: Success
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                user_name:
+                  type: string
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName: 
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    userID: 
+                      type: integer
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /user:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  last_name:
+                    type: string
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user_name:
+                      type: string
+</pre>

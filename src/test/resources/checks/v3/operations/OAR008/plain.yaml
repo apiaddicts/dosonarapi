@@ -1,0 +1,35 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    patch:
+      responses:
+        200:
+          description: Ok
+    get:
+      responses:
+        200:
+          description: Ok
+    post:
+      responses:
+        200:
+          description: Ok
+    put:
+      responses:
+        200:
+          description: Ok
+    delete:
+      responses:
+        200:
+          description: Ok
+    head: # Noncompliant {{OAR008: Http verb (head) not encouraged}}
+      responses:
+        200:
+          description: Ok
+    options: # Noncompliant {{OAR008: Http verb (options) not encouraged}}
+      responses:
+        200:
+          description: Ok
+

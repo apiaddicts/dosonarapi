@@ -1,0 +1,26 @@
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: My API
+  paths:
+    /examples:
+      post:
+        summary: Get a list of items
+        parameters: # Noncompliant {{OAR083: The parameter email should not pass through this querystring}}
+          - name: email 
+            in: query
+            schema:
+              type: string
+          - name: param2
+            in: query
+            schema:
+              type: integer
+        responses:
+          200:
+            description: A list of items
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string

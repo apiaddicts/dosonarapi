@@ -1,0 +1,13 @@
+{
+    "title": "OAR091 - ParamOnlyRef - Los parámetros sólo deben contener referencias ($ref)",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

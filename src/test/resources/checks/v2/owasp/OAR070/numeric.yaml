@@ -1,0 +1,17 @@
+swagger: '2.0'
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+paths:
+  /users/{id}:
+    get:
+      summary: Get user by ID
+      parameters: 
+        - name: id 
+          in: path  
+          description: User ID  
+          required: false 
+          type: integer  # Noncompliant {{OAR070: Parameters in path shouldnt be numeric}}
+      responses:
+        '200':
+          description: Successful operation

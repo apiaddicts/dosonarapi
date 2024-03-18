@@ -1,0 +1,14 @@
+{
+    "title": "OAR108 - SchemaValidator - El esquema no coincide con el ejemplo proporcionado",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "3h"
+    },
+    "tags": [
+      "schemas"
+    ],
+    "defaultSeverity": "MAJOR"
+  }
+  

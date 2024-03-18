@@ -1,0 +1,65 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/pets" : {
+      "get" : {
+        "responses" : {
+          # Noncompliant@+1 {{OAR045: Define the model of your response}}
+          "200" : {
+            "description" : "some response"
+          },
+          "202" : {
+            "description" : "some response",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "401" : { # Noncompliant {{OAR045: Define the model of your response}}
+            "$ref" : "#/responses/MyErroneousResponse"
+          }
+        }
+      },
+      "post" : {
+        # Noncompliant@+1 {{OAR045: Define the responses of your operations}}
+        "responses" : { }
+      },
+      "put" : {
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "200" : { # Noncompliant {{OAR045: Define the model of your response}}
+            "description" : "success response"
+          }
+        }
+      }
+    },
+    "/other": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        }
+      }
+    }
+  },
+  "responses" : {
+    "MyErroneousResponse" : {
+      "description" : "an example response missing a model"
+    },
+    "MyOtherResponse" : {
+      "description" : "some response",
+      "schema" : {
+        "type" : "object"
+      }
+    }
+  }
+}

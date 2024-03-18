@@ -1,0 +1,103 @@
+<p>Paths parameters should have not found (404) response</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      parameters:
+        - name: param1
+          in: path
+          required: false
+          type: string
+      responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR079: Paths parameters should have not found (404) response}}</span>
+        200:
+          description: A list of items
+          schema:
+            type: array
+            items:
+              type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /items:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: path
+            required: false
+            type: string
+        responses: 
+          200:
+            description: A list of items
+            schema:
+              type: array
+              items:
+                type: string
+          404:
+            description: Not Found
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      parameters:
+        - name: param1
+          in: path
+          required: false
+          schema:
+            type: string
+      responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR079: Paths parameters, should have not found (404) response}}</span>
+        200:
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /items:
+      get:
+        summary: Get a list of items
+        parameters:
+          - name: param1
+            in: path
+            required: false
+            schema:
+              type: string
+        responses:
+          200:
+            description: A list of items
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: string
+          404:
+            description: Not Found
+</pre>

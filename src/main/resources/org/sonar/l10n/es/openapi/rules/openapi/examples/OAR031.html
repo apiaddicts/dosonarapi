@@ -1,0 +1,157 @@
+<p>Los ejemplos pueden ayudar a los desarrolladores a comprender la estructura y representación de los datos de respuesta.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          schema:
+            $ref: '#/definitions/pets'
+definitions:
+  pet:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+  pets:
+    type: object
+    properties:
+      size:
+        type: integer
+      pets:
+        type: array
+        items:
+          $ref: '#/definitions/pet'
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          schema:
+            $ref: '#/definitions/pets'
+          examples:
+            application/json:
+              size: 2
+              pets:
+                - name: Fluffy
+                  type: cat
+                - name: Sparky
+                  type: dog
+
+definitions:
+  pet:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Snow"
+      type:
+        type: string
+        example: "dog"
+  pets:
+    type: object
+    properties:
+      size:
+        type: integer
+        example: 1
+      pets:
+        type: array
+        items:
+          $ref: '#/definitions/pet'
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pets'
+components:
+  schemas:
+    pet:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    pets:
+      type: object
+      properties:
+        size:
+          type: integer
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/pet'
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Pet list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pets'
+              example:
+                size: 2
+                pets:
+                - name: Fluffy
+                  type: cat
+                - name: Sparky
+                  type: dog
+components:
+  schemas:
+    pet:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Snow
+        type:
+          type: string
+          example: dog
+    pets:
+      type: object
+      properties:
+        size:
+          type: integer
+          example: 1
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/pet'
+</pre>

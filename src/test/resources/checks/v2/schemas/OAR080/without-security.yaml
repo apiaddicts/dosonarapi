@@ -1,0 +1,30 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Sample API"
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    name: X-API-Key
+    in: header
+paths:
+  /users:
+    get:  # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      responses:
+        200:
+          description: "OK"
+  /products:
+    post: # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      responses:
+        200:
+          description: "OK"
+  /orders:
+    put:  # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      responses:
+        200:
+          description: "OK"
+  /invoices:
+    delete: # Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete.}}
+      responses:
+        200:
+          description: "OK"

@@ -1,29 +1,6 @@
 <p>
   Los scopes disponibles se definen al final del documento de definición, a nivel raíz. Se definen mediante la siguiente estructura:
 </p>
-<h3>JSON</h3>
-<pre>
-{
-    "x-wso2-security": {
-        "apim": null, 
-        "x-wso2-scopes": [
-            {
-                "name": "Nombre_scope_1", 
-                "description": "", 
-                "key": "Etiqueta_scope_1", 
-                "roles": "Role_1, Role_2, \u2026, Role_n"
-            }, 
-            {
-                "name": "Nombre_scope_2&gt;", 
-                "description": "", 
-                "key": "Etiqueta_scope_2", 
-                "roles": "Role_1,Role_2,\u2026,Role_n"
-            }
-        ]
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 x-wso2-security:
   apim:
@@ -52,29 +29,6 @@ x-wso2-security:
   <li>roles: Cadena con todos los roles asociados al scope separados por coma (se corresponde con los perfiles de cada Aplicación obtenidos de USUG).</li>
 </ul>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -89,29 +43,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "apfc_sc_read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -126,29 +57,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
@@ -163,29 +71,6 @@ x-wso2-security:
       description: Allows users to read data
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "apfc_sc_read", 
-                    "roles": "READ_ROLE", 
-                    "key": "read", 
-                    "description": "Allows users to read data"
-                }
-            ]
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

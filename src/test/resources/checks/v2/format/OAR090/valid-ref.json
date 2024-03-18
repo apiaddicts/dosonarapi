@@ -1,0 +1,31 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Sample API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/sample": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "$ref": "#/definitions/SuccessResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }

@@ -6,6 +6,8 @@ import org.sonar.api.rule.Severity;
 import org.sonar.api.rules.RuleType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.security.OAR001MandatoryHttpsProtocolCheck;
+
 public class OAR001MandatoryHttpsProtocolCheckTest extends BaseCheckTest {
 
     @Before
@@ -38,6 +40,6 @@ public class OAR001MandatoryHttpsProtocolCheckTest extends BaseCheckTest {
 
     @Override
     public void verifyRule() {
-        assertRuleProperties("OAR001 - MandatoryHttpsProtocol - Https protocol is mandatory", RuleType.VULNERABILITY, Severity.CRITICAL, tags("vulnerability"));
+        assertRuleProperties("OAR001 - MandatoryHttpsProtocol - Https protocol is mandatory", RuleType.VULNERABILITY, Severity.CRITICAL, tags("safety"));
     }
 }

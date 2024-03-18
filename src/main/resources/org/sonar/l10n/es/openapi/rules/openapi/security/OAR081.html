@@ -1,0 +1,145 @@
+<p>Los campos de tipo password deben ser string con formato password</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: "1.0.0"
+    title: "Swagger Petstore"
+  paths:
+    /users:
+      post:
+        consumes:
+          - "application/json"
+        produces:
+          - "application/json"
+        parameters:
+          - in: "body"
+            name: "body"
+            description: "User object that needs to be added"
+            required: true
+            schema:
+              type: "object"
+              properties:
+                username:
+                  type: "string"
+                password: 
+                  type: "string"  
+                  format: "number"  
+        responses:
+          200:
+            description: "User created"
+            schema:
+              type: "object"
+              properties:
+                username:
+                  type: "string"
+                password: 
+                  type: "string"  
+                  format: "number" 
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: "1.0.0"
+    title: "Swagger Petstore"
+  paths:
+    /users:
+      post:
+        consumes:
+          - "application/json"
+        produces:
+          - "application/json"
+        parameters:
+          - in: "body"
+            name: "body"
+            description: "User object that needs to be added"
+            required: true
+            schema:
+              type: "object"
+              properties:
+                username:
+                  type: "string"
+                password:
+                  type: "string"
+                  format: "password"
+        responses:
+          200:
+            description: "User created"
+            schema:
+              type: "object"
+              properties:
+                username:
+                  type: "string"
+                password:
+                  type: "string"
+                  format: "password" 
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /users:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password: 
+                    type: string  
+                    format: number  
+        responses:
+          200:
+            description: A user was successfully created.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    password: 
+                      type: string  
+                      format: number
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  paths:
+    /users:
+      post:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string  
+                    format: password
+        responses:
+          200:
+            description: A user was successfully created.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    password:
+                      type: string
+                      format: password
+</pre>

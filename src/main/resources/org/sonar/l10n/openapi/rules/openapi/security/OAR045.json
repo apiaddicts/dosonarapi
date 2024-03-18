@@ -1,0 +1,13 @@
+{
+  "title": "OAR045 - DefinedResponse - Each operation MUST have at least one defined response with a defined model.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "2h"
+  },
+  "tags": [
+    "safety"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

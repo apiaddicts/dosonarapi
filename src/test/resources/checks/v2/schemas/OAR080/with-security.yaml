@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Sample API
+paths:
+  /users:
+    get:
+      summary: Get all users
+      security:
+        - apiKey: []
+        - oauth2: []
+      responses:
+        '200':
+          description: OK
+  /products:
+    post:
+      summary: Create a new product
+      security:
+        - oauth2: []
+        - apiKey: []
+      responses:
+        '200':
+          description: OK
+securityDefinitions:
+  oauth2:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://example.com/oauth/authorize
+    scopes:
+      read: Read access
+      write: Write access
+  apiKey:
+    type: apiKey
+    name: X-API-Key
+    in: header

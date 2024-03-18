@@ -1,0 +1,13 @@
+{
+    "title": "OAR101 - FirstPartBasePath - The first part of the path should be one of the alloweds",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

@@ -1,0 +1,19 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Swagger Petstore"
+paths:
+  /patata: 
+    post: 
+      parameters: 
+        - name: "param1" 
+          in: "path"
+          required: false
+          type: "string"
+      responses:  # Noncompliant {{OAR079: Paths parameters, should have not found (404) response}}
+        '200':  
+          description: "A list of items"
+          schema:
+            type: "array"
+            items:
+              type: "string"

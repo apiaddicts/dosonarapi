@@ -1,0 +1,13 @@
+{
+    "title": "OAR067 - CamelCaseNamingConvention - RequestBody and Responses schema property names must be compliant with the camelCase naming convention",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "10min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

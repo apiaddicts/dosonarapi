@@ -1,0 +1,25 @@
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Swagger Petstore
+    paths:
+      /items/{param1}:
+        get:
+          summary: Get a list of items
+          parameters:
+            - name: param1  
+              in: path
+              required: false
+              schema:
+                type: integer # Noncompliant {{OAR070: Parameters in path shouldnt be numeric}}
+          responses:
+            200:
+              description: A list of items
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: string
+            400:
+                description: error

@@ -1,31 +1,5 @@
 <p>A scope use always needs a type of authentication.</p>
 <h2>Noncompliant Code Example</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "read"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 x-wso2-security:
@@ -41,33 +15,6 @@ paths:
       x-scope: read
 </pre>
 <h2>Compliant Solution</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "x-wso2-security": {
-        "apim": {
-            "x-wso2-scopes": [
-                {
-                    "name": "read", 
-                    "key": "read", 
-                    "roles": "READ_ROLE", 
-                    "description": "Allows users to view records"
-                }
-            ]
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "x-scope": "read", 
-                "x-aut-type": "Application &amp; Application User"
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 x-wso2-security:

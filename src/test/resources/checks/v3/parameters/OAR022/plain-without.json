@@ -5,11 +5,11 @@
     "title" : "Swagger Petstore"
   },
   "paths" : {
-    "/pets" : {
-      "get" : {
-        "parameters" : [ { # Noncompliant {{OAR022: $orderby must be defined as a parameter in this operation}}
+    "/examples" : {
+      "get" : { # Noncompliant {{OAR022: $orderby must be defined as a parameter in this operation}}
+        "parameters" : [ { 
           "in" : "query",
-          "name" : "other",
+          "name" : "other", 
           "schema": {
             "type" : "array",
             "items" : {
@@ -18,7 +18,7 @@
           }
         }, {
           "in" : "query",
-          "name" : "orderby",
+          "name" : "select",  
           "schema": {
             "type" : "array",
             "items" : {

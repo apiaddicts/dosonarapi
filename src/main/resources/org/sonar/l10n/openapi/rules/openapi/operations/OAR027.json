@@ -1,0 +1,13 @@
+{
+  "title": "OAR027 - PostResponseLocationHeader - Location header is required in responses with code 201 from POST operations",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

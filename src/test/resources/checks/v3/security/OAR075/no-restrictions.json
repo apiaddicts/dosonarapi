@@ -1,0 +1,28 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API sin restricciones",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/users/{id}": {
+        "get": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"  # Noncompliant {{OAR075: String parameters should have minLength, maxLength, pattern (regular expression), or enum restriction}}
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Un usuario"
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,125 @@
+<p>Los verbos permitidos por el estándar son: POST, GET, PUT, PATCH y DELETE. El resto de verbos aunque esten permitidos por REST no deben usarse.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+    head:
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+    head:
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+</pre>

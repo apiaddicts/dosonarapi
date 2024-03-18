@@ -1,0 +1,17 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Non-compliant API
+paths:
+  /param2:
+    get:
+      summary: Get a list of items
+      responses: # Noncompliant {{OAR073: API should include a 429 response to indicate rate limiting}}
+        200:
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string

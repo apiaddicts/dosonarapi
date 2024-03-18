@@ -1,0 +1,13 @@
+{
+    "title": "OAR074 - NumericParameterIntegrityCheck - Numeric parameters should have minimum, maximum, or format restriction",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+}

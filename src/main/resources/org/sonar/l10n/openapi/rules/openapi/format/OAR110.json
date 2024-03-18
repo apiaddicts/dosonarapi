@@ -1,0 +1,13 @@
+{
+    "title": "OAR110 - LicenseInformation - License information cannot be empty",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

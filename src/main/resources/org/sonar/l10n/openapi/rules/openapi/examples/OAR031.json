@@ -1,0 +1,13 @@
+{
+  "title": "OAR031 - Examples - Responses, Request Body, Parameters and Properties must have an example defined",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "examples"
+  ],
+  "defaultSeverity": "MAJOR"
+}

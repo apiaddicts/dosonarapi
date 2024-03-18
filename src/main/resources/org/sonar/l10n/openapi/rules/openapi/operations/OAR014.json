@@ -1,0 +1,13 @@
+{
+  "title": "OAR014 - ResourceLevelWithinNonSuggestedRangeCheck - Resources depth level should be below the non-suggested range",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MINOR"
+}

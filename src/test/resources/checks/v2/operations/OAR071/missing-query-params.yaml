@@ -1,0 +1,28 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: My API
+paths:
+  /examples:
+    get:
+      summary: Get a list of items
+      parameters: # Noncompliant {{OAR071: Query parameters param2 must be defined}} 
+        - name: param1
+          in: query
+          type: string
+        - name: param3
+          in: query
+          type: boolean
+        - name: param4
+          in: query
+          type: string
+        - name: param5
+          in: query
+          type: number
+      responses:
+        200:
+          description: A list of items
+          schema:
+            type: array
+            items:
+              type: string

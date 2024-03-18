@@ -1,0 +1,13 @@
+{
+    "title": "OAR072 - NonOKModelResponseCheck - Las respuestas que no son de la gama 2XX no deberían llevar stackTraces",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+}

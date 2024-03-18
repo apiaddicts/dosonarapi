@@ -12,9 +12,10 @@ paths:
           items:
             type: string
         - in: query
-          name: $limit
-          type: integer
-          format: int64
+          name: select
+          type: array
+          items:
+            type: string
       responses:
         206:
           description: Ok

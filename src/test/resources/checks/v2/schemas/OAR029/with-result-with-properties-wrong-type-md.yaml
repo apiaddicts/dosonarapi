@@ -1,0 +1,52 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /endpoint:
+    get:
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/response'
+        204:
+          description: No content
+        400:
+          description: Error
+          schema:
+            $ref: '#/definitions/response'
+        default:
+          description: Unknown
+
+definitions:
+  response:
+    type: object
+    allOf:
+      - $ref: '#/definitions/standard_response'
+    properties:
+      data:
+        type: object
+        properties:
+          tipos:
+            type: array
+            items:
+              type: string
+  standard_response:
+    type: object
+    properties:
+      result:
+        type: object
+        properties:
+          status:
+            type: string # Noncompliant {{OAR029: 'status' must be of type boolean}}
+          http_code:
+            type: string # Noncompliant {{OAR029: 'http_code' must be of type integer}}
+          errors:
+            type: string # Noncompliant {{OAR029: 'errors' must be of type array}}
+          trace_id:
+            type: integer # Noncompliant {{OAR029: 'trace_id' must be of type string}}
+        required:
+          - status
+          - http_code
+          - trace_id

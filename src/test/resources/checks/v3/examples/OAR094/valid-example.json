@@ -1,0 +1,62 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API con Examples",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/pets": {
+        "get": {
+          "summary": "Devuelve una lista de mascotas",
+          "responses": {
+            "200": {
+              "description": "Lista exitosa de mascotas",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Pet"
+                    }
+                  },
+                  "examples": {
+                    "catExample": {
+                      "value": [
+                        {
+                          "name": "Whiskers",
+                          "animalType": "Cat"
+                        }
+                      ]
+                    },
+                    "dogExample": {
+                      "value": [
+                        {
+                          "name": "Daisy",
+                          "animalType": "Dog"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Pet": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "animalType": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

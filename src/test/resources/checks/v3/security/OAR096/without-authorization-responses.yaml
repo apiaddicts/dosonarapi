@@ -1,0 +1,62 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    OpenID:
+      type: openIdConnect
+      openIdConnectUrl: https://example.com/.well-known/openid-configuration
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+security:
+  - ApiKeyAuth: []
+  - OAuth2:
+    - read
+    - write
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      responses: # Noncompliant {{OAR096: Response code 403 must be defined for operations with security schemes defined}} 
+        200:
+          description: Ok
+
+  /with-header:
+    parameters:
+      - in: header
+        name: x-api-key
+        schema:
+          type: string
+    get:
+      responses: # Noncompliant {{OAR096: Response code 403 must be defined for operations with security schemes defined}} 
+        200:
+          description: Ok
+
+  /without:
+    get:
+      responses: # Noncompliant {{OAR096: Response code 403 must be defined for operations with security schemes defined}} 
+        200:
+          description: Ok

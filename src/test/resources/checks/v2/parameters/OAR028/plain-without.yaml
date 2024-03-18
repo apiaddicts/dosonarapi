@@ -3,16 +3,16 @@ info:
   version: 1.0.0
   title: Swagger Petstore
 paths:
-  /pets:
+  /examples:
     get:
-      parameters: # Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}
+      parameters: 
         - in: query
-          name: other
+          name: other # Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}
           type: array
           items:
             type: string
         - in: query
-          name: orderby
+          name: hola # Noncompliant {{OAR028: $filter must be defined as a parameter in this operation}}
           type: array
           items:
             type: string

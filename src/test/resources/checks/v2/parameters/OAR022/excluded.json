@@ -16,7 +16,7 @@
           }
         }, {
           "in" : "query",
-          "name" : "$orderby",
+          "name" : "select",
           "type" : "array",
           "items" : {
             "type" : "string"

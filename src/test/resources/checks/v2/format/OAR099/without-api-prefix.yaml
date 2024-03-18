@@ -1,0 +1,6 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+basePath: /seguros/v1 # Noncompliant {{OAR099: API name must start with prefix 'api-'}}
+paths: {}

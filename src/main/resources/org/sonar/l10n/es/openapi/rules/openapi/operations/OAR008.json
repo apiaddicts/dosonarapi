@@ -1,0 +1,13 @@
+{
+  "title": "OAR008 - AllowedHttpVerb - Verbo http no recomendado",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "2h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

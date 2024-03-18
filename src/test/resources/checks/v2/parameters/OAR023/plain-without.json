@@ -5,19 +5,22 @@
     "title" : "Swagger Petstore"
   },
   "paths" : {
-    "/pets" : {
-      "get" : {
-        "parameters" : [ { # Noncompliant {{OAR023: $total must be defined as a parameter in this operation}}
+    "/examples" : {
+      "get" : { # Noncompliant {{OAR023: $total must be defined as a parameter in this operation}}
+        "parameters" : [ { 
           "in" : "query",
-          "name" : "other",
+          "name" : "other", 
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         }, {
           "in" : "query",
-          "name" : "total",
-          "type" : "boolean"
+          "name" : "hola", 
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "206" : {

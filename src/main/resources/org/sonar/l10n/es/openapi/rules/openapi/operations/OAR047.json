@@ -1,0 +1,13 @@
+{
+  "title": "OAR047 - DocumentedTag - Los tags deben de estar documentados.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5mn"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

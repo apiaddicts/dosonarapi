@@ -1,0 +1,68 @@
+<p>ALL Api methods should have security</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: "1.0.0"
+    title: "Sample API"
+  securityDefinitions:
+    apiKey:
+      type: apiKey
+      name: X-API-Key
+      in: header
+  paths:
+    /users:
+      get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR078: All API methods must have security}}</span>
+        responses:
+          200:
+            description: "OK"
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: "1.0.0"
+    title: Sample API
+  paths:
+    /users:
+      get:
+        security:
+          - apiKey: []
+        responses:
+          "200":
+            description: OK
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Sample API
+  components:
+    securitySchemes:
+      apiKey:
+        type: apiKey
+        name: X-API-Key
+        in: header
+  paths:
+    /users:
+      get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR078: All API methods must have security}}</span>
+        responses:
+          '200':
+            description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    version: 1.0.0
+    title: Sample API
+  paths:
+    /users:
+      get:
+        security:
+          - apiKey: []
+        responses:
+          '200':
+            description: OK
+</pre>

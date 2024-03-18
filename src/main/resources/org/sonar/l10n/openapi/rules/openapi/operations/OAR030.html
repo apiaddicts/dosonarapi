@@ -1,0 +1,63 @@
+<p>An API without a status endpoint is hard to observe with monitoring tools.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR030: The path '/status' must be declared}}</span>
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+  /status:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR030: The path '/status' must be declared}}</span>
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        200:
+          description: Ok
+  /status:
+    get:
+      responses:
+        200:
+          description: Ok
+</pre>

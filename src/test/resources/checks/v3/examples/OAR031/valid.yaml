@@ -1,0 +1,113 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/pet"
+            example:
+              name: Puppy
+              type: dog
+      responses:
+        201:
+          description: Pet list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pet'
+              example:
+                name: Puppy
+                type: dog
+        204:
+          description: No content
+        default:
+          $ref: "#/components/responses/server_error_response"
+    get:
+      responses:
+        204:
+          description: No content
+        206:
+          description: Pet created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pets'
+              example:
+                size: 2
+                pets:
+                  - name: Fluffy
+                    type: cat
+                  - name: Sparky
+                    type: dog
+        default:
+          $ref: "#/components/responses/server_error_response"
+  /pets/{id}:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        200:
+          description: One pet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/pet"
+              example:
+                name: Fluffy
+                type: cat
+        204:
+          description: No content
+        default:
+          $ref: "#/components/responses/server_error_response"
+
+components:
+  parameters:
+    id:
+      in: path
+      name: id
+      schema:
+        type: integer
+        format: int64
+        maxLength: 22
+        example: 513168138
+      description: Identificador del tipo de centro a obtener, actualizar o eliminar.
+      required: true
+
+  schemas:
+    pet:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Snow"
+        type:
+          type: string
+          example: "dog"
+    pets:
+      type: object
+      properties:
+        size:
+          type: integer
+          example: 1
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/pet'
+  responses:
+    server_error_response:
+      description: Default error response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Server error"
+          example:
+            error: "Server error"

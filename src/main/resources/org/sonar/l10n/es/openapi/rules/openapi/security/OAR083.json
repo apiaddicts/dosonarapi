@@ -1,0 +1,13 @@
+{
+    "title": "OAR083 - ForbiddenQueryParams - Este parámetro no debe pasar por este querystring",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

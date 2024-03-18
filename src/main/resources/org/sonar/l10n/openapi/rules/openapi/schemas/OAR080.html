@@ -1,0 +1,154 @@
+<p>The security scheme must be among those allowed by the organization and must be complete.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+    version: "1.0.0"
+    title: "Sample API"
+    securityDefinitions:
+    apiKey:
+        type: apiKey
+        name: X-API-Key
+        in: header
+    paths:
+    /users:
+        get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+        responses:
+            200:
+            description: "OK"
+    /products:
+        post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+        responses:
+            200:
+            description: "OK"
+    /orders:
+        put: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+        responses:
+            200:
+            description: "OK"
+    /invoices:
+        delete: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+        responses:
+            200:
+            description: "OK"
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: 1.0.0
+      title: Sample API
+    paths:
+      /users:
+        get:
+          summary: Get all users
+          security:
+            - apiKey: []
+            - oauth2: []
+          responses:
+            '200':
+              description: OK
+      /products:
+        post:
+          summary: Create a new product
+          security:
+            - oauth2: []
+            - apiKey: []
+          responses:
+            '200':
+              description: OK
+    securityDefinitions:
+      oauth2:
+        type: oauth2
+        flow: implicit
+        authorizationUrl: https://example.com/oauth/authorize
+        scopes:
+          read: Read access
+          write: Write access
+      apiKey:
+        type: apiKey
+        name: X-API-Key
+        in: header
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+    openapi: 3.0.0
+    info:
+      version: 1.0.0
+      title: Sample API
+    paths:
+      /users:
+        get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+          summary: Get all users
+          security: 
+            - apiKey: []
+          responses:
+            '200':
+              description: OK
+      /products:
+        post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+          summary: Create a new product
+          security: 
+            - oauth2: []
+          responses:
+            '200':
+              description: OK
+      /orders:
+        put: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+          summary: Update an order
+          security: 
+            - unknownScheme: []
+          responses:
+            '200':
+              description: OK
+      /invoices:
+        delete: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR080: The security scheme must be among those allowed by the organization and must be complete}}</span>
+          summary: Delete an invoice
+          security: 
+            - unknownScheme: []
+          responses:
+            '200':
+              description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+    openapi: 3.0.0
+    info:
+      version: 1.0.0
+      title: Sample API
+    paths:
+      /users:
+        get:
+          summary: Get all users
+          security:
+            - apiKey: []
+            - oauth2: []
+          responses:
+            '200':
+              description: OK
+      /products:
+        post:
+          summary: Create a new product
+          security:
+            - apiKey: []
+            - oauth2: []
+          responses:
+            '200':
+              description: OK
+      /orders:
+        put:  
+          summary: Update an order
+          security: 
+            - unknownScheme: [] 
+          responses:
+            '200':
+              description: OK
+      /invoices:
+        delete: 
+          summary: Delete an invoice
+          security: 
+            - unknownScheme: [] 
+          responses:
+            '200':
+              description: OK
+</pre>

@@ -1,0 +1,19 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Compliant API
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      responses:
+        '200':
+          description: A list of items
+          schema:
+            type: array
+            items:
+              type: string
+        '429':
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/error_response'

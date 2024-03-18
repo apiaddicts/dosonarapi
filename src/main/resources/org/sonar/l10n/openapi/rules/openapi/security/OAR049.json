@@ -1,0 +1,13 @@
+{
+  "title": "OAR049 - NoContent204 - 204 responses MUST NOT return content.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "safety"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

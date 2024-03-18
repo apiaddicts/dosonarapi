@@ -1,0 +1,90 @@
+<p>Los tipos de medio definidos deben cumplir con los estándares <a href="https://tools.ietf.org/html/rfc6838">RFC6838</a> y <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.
+    Esto garantiza que una herramienta pueda confiar en el tipo de medio declarado para procesar la respuesta</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+produces:
+    - application/json
+    - text/*
+consumes:
+    - application/json
+    - text/*
+paths:
+    /pets:
+    get:
+        produces:
+        - application
+        - text/plain
+        consumes:
+        - application
+        - text/plain
+        responses:
+        '200':
+            description: some operation
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+produces:
+    - application/json
+    - text/plain
+consumes:
+    - application/json
+    - text/plain
+paths:
+    /pets:
+    get:
+        produces:
+        - application/json
+        - text/plain
+        consumes:
+        - application/json
+        - text/plain
+        responses:
+        '200':
+            description: some operation
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+paths:
+    /pets:
+    post:
+        requestBody:
+        content:
+            'application': {}
+            'text/*': {}
+        responses:
+        '200':
+            description: some operation
+            content:
+            'application': {}
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+paths:
+    /pets:
+    post:
+        requestBody:
+        content:
+            'application/json': {}
+            'text/plain': {}
+        responses:
+        '200':
+            description: some operation
+            content:
+            'application/json': {}
+</pre>

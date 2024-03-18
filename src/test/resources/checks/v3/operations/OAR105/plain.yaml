@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: Swagger Petstore (Posts only)
+paths:
+  /resources:
+    put: 
+      responses:
+        '200':
+          description: Ok
+  /resources/{r_id}:
+    put: 
+      responses:
+        '200':
+          description: Ok
+  /resources/get: 
+    put: # Noncompliant {{OAR105: Operation not recommended for resource path: resources/get}} 
+      responses:
+        '200':
+          description: Ok
+  /resources/delete:  
+    put:  # Noncompliant {{OAR105: Operation not recommended for resource path: resources/delete}}
+      responses:
+        '200':
+          description: Ok
+  /resources/{r_id}/other:
+    put: 
+      responses:
+        '200':
+          description: Ok
+  /resources/me: 
+    put: 
+      responses:
+        '200':
+          description: Ok

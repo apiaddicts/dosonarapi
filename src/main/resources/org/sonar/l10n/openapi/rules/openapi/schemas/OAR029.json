@@ -1,0 +1,13 @@
+{
+  "title": "OAR029 - StandardResponse - Response schema must be compliant with the standard",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "4h"
+  },
+  "tags": [
+    "schemas"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

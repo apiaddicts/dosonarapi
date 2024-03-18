@@ -1,0 +1,119 @@
+<p>Los parámetros String deben tener restricciones de longitud mínima, longitud máxima, expresión regular o enumeración.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      version: 1.0.0
+      title: Swagger Petstore
+    paths:
+      /items/{itemId}:
+        get:
+          summary: Obtener artículo por ID
+          parameters:
+            - name: itemId
+              in: path
+              description: ID del artículo
+              required: true
+              type: string
+          responses:
+            200:
+              description: Detalles del artículo
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            400:
+              description: error
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      version: 1.0.0
+      title: Swagger Petstore
+    paths:
+      /items/{itemId}:
+        get:
+          summary: Obtener artículo por ID
+          parameters:
+            - name: itemId
+              in: path
+              description: ID del artículo
+              required: true
+              type: string
+              minLength: 1
+              maxLength: 10
+          responses:
+            200:
+              description: Detalles del artículo
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            400:
+              description: error
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Swagger Petstore
+    paths:
+      /items/{param1}:
+        get:
+          summary: Obtener una lista de artículos
+          parameters:
+            - name: param1
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            200:
+              description: Una lista de artículos
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: string
+            400:
+              description: error
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Swagger Petstore
+    paths:
+      /items/{param1}:
+        get:
+          summary: Obtener una lista de artículos
+          parameters:
+            - name: param1
+              in: path
+              required: true
+              schema:
+                type: string
+                minLength: 1
+                maxLength: 10
+          responses:
+            200:
+              description: Una lista de artículos
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: string
+            400:
+                description: error
+</pre>

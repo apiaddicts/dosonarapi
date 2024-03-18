@@ -12,7 +12,7 @@ paths:
           items:
             type: string
         - in: query
-          name: $filter
+          name: select
           type: array
           items:
             type: string

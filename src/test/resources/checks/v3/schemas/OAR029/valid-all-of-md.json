@@ -1,0 +1,134 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Swagger Petstore",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "/"
+      }
+    ],
+    "paths": {
+      "/endpoint": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/response"
+                  }
+                }
+              }
+            },
+            "204": {
+              "description": "No content",
+              "content": {
+              }
+            },
+            "400": {
+              "description": "Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/response"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "Unknown",
+              "content": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "response": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/standard_response"
+            }
+          ],
+          "properties" : {
+            "data" : {
+              "type" : "object",
+              "properties" : {
+                "tipos" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "standard_response": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/standard_response_result"
+            },
+            {
+              "$ref": "#/components/schemas/standard_response_metadata"
+            }
+          ]
+        },
+        "standard_response_result": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "required": [
+                "http_code",
+                "status",
+                "trace_id"
+              ],
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "boolean"
+                },
+                "http_code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer"
+                      },
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "trace_id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "standard_response_metadata": {
+          "type": "object",
+          "properties": {
+            "metadata": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

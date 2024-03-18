@@ -1,42 +1,12 @@
 <p>For resources that must be named with two or more words it is recommended to use the naming convention "kebab-case" (lowercase words separated by a hyphen) to increase the readability of the url.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/Invoices/{id}/CUSTOM_DETAIL": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "path", 
-                        "name": "id", 
-                        "type": "integer", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
   title: Swagger Petstore
   version: "1.0"
 paths:
-  /Invoices/{id}/CUSTOM_DETAIL:
+  /Invoices/{id}/CUSTOM_DETAIL: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR011: The base path and resource names with more than two words must be compliant with the standard naming convention: kebab-case}}</span>
     get:
       parameters:
         - in: path
@@ -48,36 +18,6 @@ paths:
           description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/invoices/{id}/custom-detail": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "path", 
-                        "name": "id", 
-                        "type": "integer", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -96,45 +36,13 @@ paths:
           description: Ok
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/Invoices/{id}/CUSTOM_DETAIL": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "path", 
-                        "name": "id", 
-                        "schema": {
-                            "type": "integer"
-                        }, 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
   title: Swagger Petstore
   version: "1.0"
 paths:
-  /Invoices/{id}/CUSTOM_DETAIL:
+  /Invoices/{id}/CUSTOM_DETAIL: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR011: The base path and resource names with more than two words must be compliant with the standard naming convention: kebab-case}}</span>
     get:
       parameters:
         - in: path
@@ -147,38 +55,6 @@ paths:
           description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/invoices/{id}/custom-detail": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "path", 
-                        "name": "id", 
-                        "schema": {
-                            "type": "integer"
-                        }, 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

@@ -1,0 +1,75 @@
+<p>Define a summary for each operation. The OpenAPI contract is a way to convey meaning to non-technical users. The
+summary will help those populations understand what the operation is about, instead of approaching it in technical terms.
+</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR050: Provide a summary for each operation}}</span>
+      responses:
+        default:
+          description: the default response
+    get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR050: Provide a summary for each operation}}</span>
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post:
+      summary: Create a new pet
+      responses:
+        default:
+          description: the default response
+    get:
+      summary: List all pets
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR050: Provide a summary for each operation}}</span>
+      responses:
+        default:
+          description: the default response
+    get: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR050: Provide a summary for each operation}}</span>
+      responses:
+        default:
+          description: the default response
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    post:
+      summary: Create a new pet
+      responses:
+        default:
+          description: the default response
+    get:
+      summary: List all pets
+      responses:
+        default:
+          description: the default response
+</pre>

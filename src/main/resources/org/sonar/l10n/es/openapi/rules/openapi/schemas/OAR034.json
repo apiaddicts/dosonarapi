@@ -1,0 +1,13 @@
+{
+  "title": "OAR034 - StandardPagedResponse - El esquema de la respuesta paginada debe cumplir con el estandar",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "schemas"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

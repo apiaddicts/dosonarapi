@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /sample:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/UserParam'
+      responses:
+        '200':
+          description: Successful response
+components:
+  parameters:
+    UserParam:
+      name: user
+      in: query
+      description: User information
+      required: true
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string

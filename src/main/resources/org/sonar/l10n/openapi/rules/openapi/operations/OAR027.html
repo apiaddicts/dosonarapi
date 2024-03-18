@@ -1,0 +1,60 @@
+<p>POST creation responses must have a Location header with the reference to the new resource.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR027: Location header is required in responses with code 201 from POST operations}}</span>
+          description: Created
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+          headers:
+            Location:
+              type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR027: Location header is required in responses with code 201 from POST operations}}</span>
+          description: Created
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  title: Swagger Petstore
+  version: 1.0.0
+paths:
+  /pets:
+    post:
+      responses:
+        201:
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+</pre>

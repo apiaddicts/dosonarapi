@@ -1,0 +1,126 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/endpoint": {
+      "get": {
+        "responses": {
+          "206": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unknown"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "response": {
+        "type": "object",
+        "allOf": [ {
+          "$ref": "#/components/schemas/paged_response"
+        } ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "paged_response": {
+        "type": "object",
+        "properties": {
+          "paging": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "integer"
+              },
+              "limit": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              },
+              "numPages": {
+                "type": "integer"
+              },
+              "links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "allOf": [ {
+                      "$ref": "#/components/schemas/link"
+                    } ]
+                  },
+                  "first": {
+                    "allOf": [ {
+                      "$ref": "#/components/schemas/link"
+                    } ]
+                  },
+                  "previous": {
+                    "allOf": [ {
+                      "$ref": "#/components/schemas/link"
+                    } ]
+                  },
+                  "next": {
+                    "allOf": [ {
+                      "$ref": "#/components/schemas/link"
+                    } ]
+                  },
+                  "last": {
+                    "allOf": [ {
+                      "$ref": "#/components/schemas/link"
+                    } ]
+                  }
+                },
+                "required": [ "self", "previous", "next" ]
+              }
+            },
+            "required": [ "start", "limit", "links" ]
+          }
+        }
+      },
+      "link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

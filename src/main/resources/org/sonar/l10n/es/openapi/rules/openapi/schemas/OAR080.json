@@ -1,0 +1,13 @@
+{
+    "title": "OAR080 - SecuritySchemas - The security scheme must be among those allowed by the organization and must be complete.",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "schemas"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

@@ -1,0 +1,125 @@
+<p>The verbs allowed by the standard are: POST, GET, PUT, PATCH and DELETE. The rest of the verbs, even if they are allowed by REST, should not be used.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+    head: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR008: Http verb (head) not encouraged}}</span>
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+    head: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR008: Http verb (head) not encouraged}}</span>
+      responses: 
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  title: Swagger Petstore
+  version: "1.0"
+paths:
+  /pets:
+    post:
+      responses: 
+        200:
+          description: OK
+    get:
+      responses: 
+        200:
+          description: OK
+    put:
+      responses: 
+        200:
+          description: OK
+    patch:
+      responses: 
+        200:
+          description: OK
+    delete:
+      responses: 
+        200:
+          description: OK
+</pre>

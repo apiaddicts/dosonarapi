@@ -1,0 +1,90 @@
+<p>The defined media types must conform to the <a href="https://tools.ietf.org/html/rfc6838">RFC6838</a> and <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.
+    This ensures that a tool can rely on the declared media type to generate appropriate code to handle the parsing of output.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+produces:
+    - application/json
+    - text/* <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}</span>
+consumes:
+    - application/json
+    - text/* <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}</span>
+paths:
+    /pets:
+    get:
+        produces:
+        - application
+        - text/plain <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}</span>
+        consumes:
+        - application
+        - text/plain <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}</span>
+        responses:
+        '200':
+            description: some operation
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+produces:
+    - application/json
+    - text/plain
+consumes:
+    - application/json
+    - text/plain
+paths:
+    /pets:
+    get:
+        produces:
+        - application/json
+        - text/plain
+        consumes:
+        - application/json
+        - text/plain
+        responses:
+        '200':
+            description: some operation
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+paths:
+    /pets:
+    post:
+        requestBody:
+        content:
+            'application': {} <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared media type range should conform to RFC7231}}</span>
+            'text/*': {} 
+        responses:
+        '200':
+            description: some operation
+            content:
+            'application': {} <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR044: Declared media type range should conform to RFC7231}}</span>
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+    version: 1.0.0
+    title: Swagger Petstore
+paths:
+    /pets:
+    post:
+        requestBody:
+        content:
+            'application/json': {}
+            'text/plain': {}
+        responses:
+        '200':
+            description: some operation
+            content:
+            'application/json': {}
+</pre>

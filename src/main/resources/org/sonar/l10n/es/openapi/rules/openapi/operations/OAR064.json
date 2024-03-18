@@ -1,0 +1,13 @@
+{
+    "title": "OAR064 - PatchMethod - Los códigos de respuesta en las operaciones PATCH deben definirse de acuerdo con el estándar",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "2h"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

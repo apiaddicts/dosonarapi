@@ -1,0 +1,13 @@
+{
+    "title": "OAR064 - PatchMethod - Response codes in PATCH operations must be defined according to the standard",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "2h"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

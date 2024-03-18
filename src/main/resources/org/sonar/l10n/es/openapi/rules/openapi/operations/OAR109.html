@@ -1,0 +1,96 @@
+<p>No se deben definir códigos de respuesta 5XX, en su lugar, utilizar default</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    title: Ejemplo de API con 500
+    version: 1.0.0
+  host: ejemplo.com
+  schemes:
+    - https
+  paths:
+    /ejemplo:
+      get:
+        summary: Ejemplo de operación
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR109: Use default instead of directly specifying 5XX codes}}</span>
+          200:
+            description: Éxito
+          500:
+            description: Error interno del servidor
+            schema:
+              $ref: '#/definitions/Error'
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: "2.0"
+    info:
+      version: "1.0.0"
+      title: "Swagger Petstore"
+    host: "example.com"
+    basePath: "/"
+    schemes:
+      - "https"
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    paths:
+      /status:
+        delete:
+          summary: "Get API status"
+          responses:
+            "400":
+              description: "error"
+      /another:
+        delete:
+          summary: "Get another API status"
+          responses:
+            "400":
+              description: "error"
+      /users:
+        delete: 
+          summary: "Get all users"
+          responses: 
+            "400":
+              description: "Error"
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Ejemplo de API con 500
+    version: 1.0.0
+  paths:
+    /ejemplo:
+      get:
+        summary: Ejemplo de operación
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR109: Use default instead of directly specifying 5XX codes}}</span>
+          '200':
+            description: Éxito
+          '500':
+            description: Error interno del servidor
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: Ejemplo de API con Default
+    version: 1.0.0
+  paths:
+    /ejemplo:
+      get:
+        summary: Ejemplo de operación
+        responses:
+          '200':
+            description: Éxito
+          default:
+            description: Error inesperado en el servidor
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+</pre>

@@ -1,0 +1,13 @@
+{
+  "title": "OAR045 - DefinedResponse - Cada operación debe de tener al menos una respuesta con un body definido.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "2h"
+  },
+  "tags": [
+    "safety"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

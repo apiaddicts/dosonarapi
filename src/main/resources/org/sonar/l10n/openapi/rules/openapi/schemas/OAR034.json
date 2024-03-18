@@ -1,0 +1,13 @@
+{
+  "title": "OAR034 - StandardPagedResponse - Paged response schema must be compliant with the standard",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "schemas"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

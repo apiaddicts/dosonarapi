@@ -1,0 +1,13 @@
+{
+    "title": "OAR109 - ForbiddenInternalServerErrorCheckTest - Utilice default en lugar de especificar códigos 5XX directamente",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "3h"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

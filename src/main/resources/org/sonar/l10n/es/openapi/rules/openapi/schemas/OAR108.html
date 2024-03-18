@@ -1,0 +1,111 @@
+<p>Los schemas deben coincidir con los ejemplos proporcionados</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      title: Ejemplo de API
+      version: 1.0.0
+    paths:
+      /item:
+        get:
+          responses:
+            200:
+              description: OK
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nombre:
+                    type: string
+                required:
+                  - id
+                  - nombre
+              examples: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR108: El esquema no coincide con el ejemplo proporcionado}}</span>
+                application/json:
+                  id: "123" 
+                  nombre: "Ejemplo"
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      title: Ejemplo de API
+      version: 1.0.0
+    paths:
+      /item:
+        get:
+          responses:
+            200:
+              description: OK
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nombre:
+                    type: string
+                required:
+                  - id
+                  - nombre
+              examples:
+                application/json:
+                  id: 123
+                  nombre: "Ejemplo"
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: 3.0.0
+    info:
+      title: Ejemplo de API
+      version: 1.0.0
+    paths:
+      /item:
+        get:
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      nombre:
+                        type: string
+                    required:
+                      - id
+                      - nombre
+                  example: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR108: El esquema no coincide con el ejemplo proporcionado}}</span>
+                    id: "123"  
+                    nombre: Ejemplo
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>  
+<pre>
+    openapi: 3.0.0
+    info:
+      title: Ejemplo de API
+      version: 1.0.0
+    paths:
+      /item:
+        get:
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      nombre:
+                        type: string
+                    required:
+                      - id
+                      - nombre
+                  example:
+                    id: 123
+                    nombre: Ejemplo
+</pre>

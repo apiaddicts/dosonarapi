@@ -1,0 +1,13 @@
+{
+    "title": "OAR100 - LastPartBasePath - The last part of the path should be the API version",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

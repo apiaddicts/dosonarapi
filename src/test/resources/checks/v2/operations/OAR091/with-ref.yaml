@@ -1,0 +1,25 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  version: '1.0.0'
+paths:
+  /sample:
+    get:
+      parameters:
+        - $ref: '#/parameters/UserId'
+        - $ref: '#/parameters/UserName'
+      responses:
+        '200':
+          description: Successful response
+parameters:
+  UserId:
+    name: userId
+    in: query
+    description: User ID
+    required: true
+    type: integer
+  UserName:
+    name: userName
+    in: query
+    description: User Name
+    type: string

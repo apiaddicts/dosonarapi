@@ -13,10 +13,11 @@ paths:
             items:
               type: string
         - in: query
-          name: $limit
+          name: select
           schema:
-            type: integer
-            format: int64
+            type: array
+            items:
+              type: string
       responses:
         206:
           description: Ok

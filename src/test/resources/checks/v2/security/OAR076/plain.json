@@ -1,0 +1,38 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/invoices": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A invoice.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer" # Noncompliant {{OAR076: Numeric types requires a valid format}}
+                },
+                "product_id": {
+                  "type": "integer", # Noncompliant {{OAR076: Numeric types requires a valid format}}
+                  "format": "int128"
+                },
+                "line": {
+                  "type": "number", # Noncompliant {{OAR076: Numeric types requires a valid format}}
+                  "format": "int32"
+                },
+                "price": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

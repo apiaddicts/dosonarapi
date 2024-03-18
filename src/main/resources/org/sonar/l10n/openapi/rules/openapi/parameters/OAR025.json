@@ -11,3 +11,16 @@
   ],
   "defaultSeverity": "MAJOR"
 }
+{
+  "title": "OAR025 - LimitParameter - the chosen parameter must be defined in this operation",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "parameters"
+  ],
+  "defaultSeverity": "MAJOR"
+}

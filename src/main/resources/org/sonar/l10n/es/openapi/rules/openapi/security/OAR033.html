@@ -1,41 +1,5 @@
 <p>Anular ciertos encabezados o permitir que se establezca cualquier encabezado y no especificar los encabezados requeridos puede causar algunas vulnerabilidades en la API.</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "header", 
-                        "name": "Accept", 
-                        "type": "string", 
-                        "required": true
-                    }, 
-                    {
-                        "in": "header", 
-                        "name": "Authorization", 
-                        "type": "string", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -58,54 +22,6 @@ paths:
           description: Ok
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "header", 
-                        "name": "x-api-key", 
-                        "type": "string", 
-                        "required": true
-                    }, 
-                    {
-                        "in": "header", 
-                        "name": "traceId", 
-                        "type": "string", 
-                        "required": true
-                    }, 
-                    {
-                        "in": "header", 
-                        "name": "dateTime", 
-                        "type": "string", 
-                        "required": true
-                    }, 
-                    {
-                        "in": "query", 
-                        "name": "Authorization", 
-                        "type": "string", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -136,45 +52,6 @@ paths:
           description: Ok
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "components": {
-        "parameters": {
-            "userId": {
-                "in": "header", 
-                "name": "x-user-id", 
-                "schema": {
-                    "type": "string"
-                }, 
-                "required": true
-            }
-        }
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/userId"
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:
@@ -198,54 +75,6 @@ paths:
           description: Ok
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "version": "1.0.0", 
-        "title": "Swagger Petstore"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "header", 
-                        "name": "x-api-key", 
-                        "schema": {
-                            "type": "string"
-                        }, 
-                        "required": true
-                    }, 
-                    {
-                        "in": "header", 
-                        "name": "traceId", 
-                        "schema": {
-                            "type": "string"
-                        }, 
-                        "required": true
-                    }, 
-                    {
-                        "in": "header", 
-                        "name": "dateTime", 
-                        "schema": {
-                            "type": "string"
-                        }, 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: "3.0.0"
 info:

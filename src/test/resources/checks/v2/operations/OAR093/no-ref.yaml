@@ -1,0 +1,20 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      summary: Get all pets
+      responses: # Noncompliant {{OAR093: Responses must contain only references ($ref)}}
+        '200': 
+          description: A list of pets
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string

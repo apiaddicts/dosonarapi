@@ -1,0 +1,79 @@
+<p>El $ref de un response debe terminar con el sufijo correspondiente</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      title: Sample API
+      version: 1.0.0
+    paths:
+      /sample:
+        get:
+          responses:
+            '200':
+              description: Successful response
+              schema:
+                $ref: '#/definitions/InvalidRef' <span class="error-info" style="color: #FD8E18;"></span># Noncompliant {{OAR090: The $ref of a response must end with the suffix Response}}</span>
+    definitions:
+      InvalidRef:
+        type: object
+        properties:
+          message:
+            type: string
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+    swagger: '2.0'
+    info:
+      title: Sample API
+      version: 1.0.0
+    paths:
+      /sample:
+        get:
+          responses:
+            '200':
+              description: Successful response
+              schema:
+                $ref: '#/definitions/SuccessResponse'
+    definitions:
+      SuccessResponse:
+        type: object
+        properties:
+          message:
+            type: string
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: 3.0.0
+    info:
+      title: Sample API
+      version: 1.0.0
+    paths:
+      /sample:
+        get:
+          responses:
+            '200':
+              description: Successful response
+              $ref: '#/components/responses/InvalidRef' <span class="error-info" style="color: #FD8E18;"></span># Noncompliant {{OAR090: The $ref of a response must end with the suffix Response}}</span>
+    components:
+      responses:
+        InvalidRef:
+          description: Successful response
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+    openapi: 3.0.0
+    info:
+      title: Sample API
+      version: 1.0.0
+    paths:
+      /sample:
+        get:
+          responses:
+            '200':
+              description: Successful response
+              $ref: '#/components/responses/SuccessResponse'
+    components:
+      responses:
+        SuccessResponse:
+          description: Successful response
+</pre> 

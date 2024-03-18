@@ -1,0 +1,13 @@
+{
+    "title": "OAR078 - VerbsSecurity - Todos los métodos de una API deben tener seguridad",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

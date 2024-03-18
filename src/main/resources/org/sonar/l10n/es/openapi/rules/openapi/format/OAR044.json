@@ -1,0 +1,13 @@
+{
+  "title": "OAR044 - MediaType - Los media types deben ser del RFC.",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5mn"
+  },
+  "tags": [
+    "format"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

@@ -1,0 +1,7 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+servers:
+  - url: https://petstore.swagger.io/api-seguros/v1
+paths: {}

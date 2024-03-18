@@ -1,0 +1,116 @@
+<p>El archivo con la especificación OpenAPI no puede contener líneas vacías, esto impedirá su análisis.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+{
+    "swagger": "2.0", 
+    "info": {
+        "title": "Ejemplo de API", 
+        "version": "1.0.0"
+    }, 
+    "paths": {
+        "/clientes": {
+            "get": {
+                "summary": "Obtenci\u00f3n de una colecci\u00f3n de clientes", 
+                "description": "Permite obtener una colecci\u00f3n de clientes.\nPor ejemplo: /usuarios o /expedientes.\nPuede admitir cabeceras, *query parameters* y el objeto $filter en el body.\n\n**Scope Oauth:** clientes_sc_consulta\n", 
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}
+</pre>
+<pre>
+swagger: "2.0"
+info: 
+  title: Ejemplo de API
+  version: 1.0.0
+paths:
+
+  /clientes:
+  
+    get:
+      # 'summary': Es OBLIGATORIO usar este elemento en todos los paths. Se trata de una breve descripción del endpoint
+      summary: Obtención de una colección de clientes
+      # 'description': es OBLIGATORIO que el contenido de este campo esté cumplimentado y difiera del del campo 'summary'
+      # Debe darse una descripción lo más detallada posible de la funcionalidad del endpoint sin describir la lógica de negocio.
+      # Si el endpoint está protegido por un scope Oauth debe indicarse cuál és en la descripción.
+      description: |
+        Permite obtener una colección de clientes.
+        Por ejemplo: /usuarios o /expedientes.
+        Puede admitir cabeceras, *query parameters* y el objeto $filter en el body.
+
+        **Scope Oauth:** clientes_sc_consulta
+      
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info: 
+  title: Ejemplo de API
+  version: 1.0.0
+paths:
+  /clientes:
+    get:
+      # 'summary': Es OBLIGATORIO usar este elemento en todos los paths. Se trata de una breve descripción del endpoint
+      summary: Obtención de una colección de clientes
+      # 'description': es OBLIGATORIO que el contenido de este campo esté cumplimentado y difiera del del campo 'summary'
+      # Debe darse una descripción lo más detallada posible de la funcionalidad del endpoint sin describir la lógica de negocio.
+      # Si el endpoint está protegido por un scope Oauth debe indicarse cuál és en la descripción.
+      description: |
+        Permite obtener una colección de clientes.
+        Por ejemplo: /usuarios o /expedientes.
+        Puede admitir cabeceras, *query parameters* y el objeto $filter en el body.
+        **Scope Oauth:** clientes_sc_consulta
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+
+info:
+  title: Ejemplo de API
+  version: 1.0.0
+
+paths:
+
+  /clientes:
+
+    get:
+      summary: Obtención de una colección de clientes
+      description: |
+        Permite obtener una colección de clientes.
+        Por ejemplo: /usuarios o /expedientes.
+        Puede admitir cabeceras, *query parameters* y el objeto $filter en el body.
+
+        **Scope Oauth:** clientes_sc_consulta
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.1
+info:
+  title: Ejemplo de API
+  version: 1.0.0
+paths:
+  /clientes:
+    get:
+      summary: Obtención de una colección de clientes
+      description: |
+        Permite obtener una colección de clientes.
+        Por ejemplo: /usuarios o /expedientes.
+        Puede admitir cabeceras, *query parameters* y el objeto $filter en el body.
+        **Scope Oauth:** clientes_sc_consulta
+      responses:
+        200:
+          description: OK
+</pre>

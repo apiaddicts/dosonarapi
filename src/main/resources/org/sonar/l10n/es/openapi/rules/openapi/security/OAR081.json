@@ -1,0 +1,13 @@
+{
+    "title": "OAR081 - PasswordFormat - Los campos de tipo password deben ser string con formato password",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

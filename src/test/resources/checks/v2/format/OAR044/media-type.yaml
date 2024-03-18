@@ -1,0 +1,26 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+produces:
+  - application/json
+  - text/* # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+consumes:
+  - application/json
+  - text/*             # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+paths:
+  /pets:
+    get: # with produces/consumes
+      produces:
+        - application   # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+        - text/plain
+      consumes:
+        - application   # Noncompliant {{OAR044: Declared mime type should conform to RFC6838}}
+        - text/plain
+      responses:
+        '200':
+          description: some operation
+    post: # without produces/consumes -> should not fail
+      responses:
+        '200':
+          description: some operation

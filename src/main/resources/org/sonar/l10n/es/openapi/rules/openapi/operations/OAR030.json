@@ -1,0 +1,13 @@
+{
+  "title": "OAR030 - StatusEndpoint - Se debe de declarar un endpoint para el status",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "BLOCKER"
+}

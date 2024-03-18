@@ -1,0 +1,42 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/endpoint" : {
+      "post" : {
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          },
+          "204" : {
+            "description" : "No content"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "response" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "string"
+            },
+            "name" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /status: 
+    get:
+      parameters: 
+        - name: param1 
+          in: path
+          required: false
+          schema:
+            type: string
+      responses:  
+        200:
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string

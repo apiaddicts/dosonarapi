@@ -1,0 +1,63 @@
+<p>El uso del elemento description es obligatorio para enriquecer la documentación de la API. Se puede usar HTML o markdown en las descripciones para darles un formato adecuado.</p>
+<p>La descripción debe de ser diferente al resumen</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      description: List all pets
+      responses:
+        default:
+          description: The default response
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      summary: list all pets
+      description: Get all defined pets. The API can be paginated by the client, but the server is allowed to restrict the number of returned results further than what the client has requested.
+      responses:
+        default:
+          description: The default response
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      description: List all pets
+      responses:
+        default:
+          description: The default response
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      summary: list all pets
+      description: Get all defined pets. The API can be paginated by the client, but the server is allowed to restrict the number of returned results further than what the client has requested.
+      responses:
+        default:
+          description: The default response
+</pre>
+

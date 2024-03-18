@@ -1,0 +1,13 @@
+{
+    "title": "OAR097 - ShortBasePath - Base path must have at least two parts",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "CRITICAL"
+  }

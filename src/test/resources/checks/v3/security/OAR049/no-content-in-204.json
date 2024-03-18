@@ -1,0 +1,25 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/other-pets/{petId}" : {
+      "delete" : {
+        "responses" : {
+          "204" : { # Noncompliant {{OAR049: 204 No Content MUST NOT return anything}}
+            "description" : "delete pet",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

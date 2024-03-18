@@ -1,0 +1,13 @@
+{
+  "title": "OAR038 - StandardCreateResponse - El esquema de respuesta de creación de un recurso debe cumplir con el estandar",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1h"
+  },
+  "tags": [
+    "operations"
+  ],
+  "defaultSeverity": "MAJOR"
+}

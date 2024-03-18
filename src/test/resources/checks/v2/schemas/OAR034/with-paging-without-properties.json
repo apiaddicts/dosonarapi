@@ -1,0 +1,68 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/endpoint" : {
+      "get" : {
+        "responses" : {
+          "206" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          },
+          "204" : {
+            "description" : "No content"
+          },
+          "400" : {
+            "description" : "Error",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          },
+          "default" : {
+            "description" : "Unknown"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "response" : {
+      "type" : "object",
+      "allOf" : [ {
+        "$ref" : "#/definitions/paged_response"
+      } ],
+      "properties" : {
+        "data" : {
+          "type" : "object",
+          "properties" : {
+            "values" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "paged_response" : {
+      "type" : "object",
+      "properties" : {
+        "paging" : { # Noncompliant {{OAR034: 'limit' property is missing}} {{OAR034: 'links' property is missing}} {{OAR034: 'numPages' property is missing}} {{OAR034: 'start' property is missing}} {{OAR034: 'total' property is missing}}
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "start", "limit", "links" ]
+        }
+      }
+    }
+  }
+}

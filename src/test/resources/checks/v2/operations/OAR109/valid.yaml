@@ -1,0 +1,33 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Swagger Petstore"
+host: "example.com"
+basePath: "/"
+schemes:
+  - "https"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /status:
+    delete:
+      summary: "Get API status"
+      responses:
+        "400":
+          description: "error"
+  /another:
+    delete:
+      summary: "Get another API status"
+      responses:
+        "400":
+          description: "error"
+  /users:
+    delete: 
+      summary: "Get all users"
+      responses: # Noncompliant {{OAR109: Use default instead of directly specifying 5XX codes}}
+        "400":
+          description: "Error"
+        "560":
+          description: "Internal Server Error"

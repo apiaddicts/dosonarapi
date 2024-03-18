@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Swagger Petstore
 paths:
-  /pets:
+  /petts:
     parameters:
     - in: header
       name: x-api-key

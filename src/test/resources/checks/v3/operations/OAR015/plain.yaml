@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /one:
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two:
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two/three:
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two/three/four:
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two/three/four/five:
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two/three/four/five/six: # Noncompliant {{OAR015: Resources depth level should be smaller}}
+    get:
+      responses:
+        default:
+          description: Ok
+  /one/two/three/four/five/six/seven: # Noncompliant {{OAR015: Resources depth level should be smaller}}
+    get:
+      responses:
+        default:
+          description: Ok

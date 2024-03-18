@@ -1,0 +1,35 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de ejemplo",
+      "version": "1.0"
+    },
+    "paths": {
+      "/mascotas": {
+        "get": {
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/idMascotaRef" # Noncompliant {{OAR088: The $ref of a parameter must end with the suffix Param}}
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de mascotas"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "parameters": {
+        "idMascotaRef": {
+          "name": "idMascota",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }

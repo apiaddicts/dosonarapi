@@ -1,0 +1,25 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  version: '1.0.0'
+paths:
+  /sample:
+    get:
+      parameters: # Noncompliant {{OAR091: Parameters must contain only references ($ref)}}
+        - name: userData
+          in: body
+          description: User Data
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Successful response
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string

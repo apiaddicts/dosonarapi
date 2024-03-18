@@ -1,0 +1,21 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Swagger Petstore"
+  },
+  "paths" : {
+    "/endpoint" : {
+      "post" : {
+        "responses" : {
+          "201" : { # Noncompliant {{OAR038: Response schema is required}}
+            "description" : "Ok"
+          },
+          "204" : {
+            "description" : "No content"
+          }
+        }
+      }
+    }
+  }
+}

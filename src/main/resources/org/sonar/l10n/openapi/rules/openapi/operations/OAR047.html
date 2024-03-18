@@ -1,0 +1,79 @@
+<p>Each tag should be documented with a short statement explaining its intent.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: unused-tag <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR047: Add a short description to this tag}}</span>
+- name: some-tag
+paths:
+  /pets:
+    get:
+      tags:
+      - some-tag
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swaggeer: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: some-tag
+  description: a tag referenced in the operations
+- name: other-tag
+  description: another tag referenced in the operations
+paths:
+  /pets:
+    get:
+      tags:
+      - some-tag
+      - other-tag
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: unused-tag <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR047: Add a short description to this tag}}</span>
+- name: some-tag
+paths:
+  /pets:
+    get:
+      tags:
+      - some-tag
+      responses:
+        200:
+          description: OK
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+tags:
+- name: some-tag
+  description: a tag referenced in the operations
+- name: other-tag
+  description: another tag referenced in the operations
+paths:
+  /pets:
+    get:
+      tags:
+      - some-tag
+      - other-tag
+      responses:
+        200:
+          description: OK
+</pre>

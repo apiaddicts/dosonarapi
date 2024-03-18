@@ -5,18 +5,18 @@
     "title" : "Swagger Petstore"
   },
   "paths" : {
-    "/pets" : {
+    "/examples" : {
       "get" : {
         "parameters" : [ {
           "in" : "query",
-          "name" : "other",
+          "name" : "$filter", 
           "type" : "array",
           "items" : {
             "type" : "string"
           }
         }, {
           "in" : "query",
-          "name" : "$filter",
+          "name" : "$filter", 
           "type" : "array",
           "items" : {
             "type" : "string"

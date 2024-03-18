@@ -1,0 +1,13 @@
+{
+    "title": "OAR088 - RefParam - El $ref de un parámetro debe terminar con el sufijo correspondiente",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

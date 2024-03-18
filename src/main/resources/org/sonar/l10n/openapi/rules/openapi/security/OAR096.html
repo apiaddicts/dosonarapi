@@ -1,0 +1,195 @@
+<p>An API definition with RBAC must take into account security responses.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: "2.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  securityDefinitions:
+    BasicAuth:
+      type: basic
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    OAuth2:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://example.com/oauth/authorize
+      tokenUrl: https://example.com/oauth/token
+      scopes:
+        read: Grants read access
+        write: Grants write access
+        admin: Grants read and write access to administrative information
+  paths:
+    /with-auth-and-header:
+      get:
+        parameters:
+          - in: header
+            name: x-api-key
+            type: string
+        security:
+          - ApiKeyAuth: []
+          - OAuth2: [read, write]
+        responses: <span class="error-info" style="color: #FD8E18;">{{OAR035: Response code 403 must be defined for operations with security schemes defined}}</span>
+          200:
+            description: Ok
+    /with-header:
+      get:
+        parameters:
+          - in: header
+            name: x-api-key
+            type: string
+        responses:
+          200:
+            description: Ok
+    /without:
+      get:
+        responses:
+          200:
+            description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
+  OAuth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://example.com/oauth/authorize
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      read: Grants read access
+      write: Grants write access
+      admin: Grants read and write access to administrative information
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [read, write]
+      responses:
+        200:
+          description: Ok
+        403:
+          description: Forbidden
+        429:
+          description: Forbidden
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: "3.0.0"
+  info:
+    version: 1.0.0
+    title: Swagger Petstore
+  components:
+    securitySchemes:
+      BasicAuth:
+        type: http
+        scheme: basic
+      BearerAuth:
+        type: http
+        scheme: bearer
+      ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: X-API-Key
+      OpenID:
+        type: openIdConnect
+        openIdConnectUrl: https://example.com/.well-known/openid-configuration
+      OAuth2:
+        type: oauth2
+        flows:
+          authorizationCode:
+            authorizationUrl: https://example.com/oauth/authorize
+            tokenUrl: https://example.com/oauth/token
+            scopes:
+              read: Grants read access
+              write: Grants write access
+              admin: Grants access to admin operations
+  security:
+    - ApiKeyAuth: []
+    - OAuth2:
+      - read
+      - write
+  paths:
+    /with-auth-and-header:
+      get:
+        parameters:
+          - in: header
+            name: x-api-key
+            schema:
+              type: string
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR035: Response code 403 must be defined for operations with security schemes defined}}</span>
+          200:
+            description: Ok  
+    /with-header:
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      get:
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR035: Response code 403 must be defined for operations with security schemes defined}}</span> 
+          200:
+            description: Ok 
+    /without:
+      get:
+        responses: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR035: Response code 403 must be defined for operations with security schemes defined}}</span>
+          200:
+            description: Ok
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+paths:
+  /with-auth-and-header:
+    get:
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      security:
+        - ApiKeyAuth: []
+        - OAuth2:
+          - read
+          - write
+      responses:
+        200:
+          description: Ok
+        403:
+          description: Forbidden
+        429:
+          description: Forbidden
+</pre>

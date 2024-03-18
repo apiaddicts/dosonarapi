@@ -1,0 +1,89 @@
+<p>The $ref of a parameter must end with a corresponding suffix</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+info:
+  title: API de ejemplo
+  version: '1.0'
+paths:
+  /mascotas:
+    get:
+      parameters:
+        - $ref: '#/parameters/idMascotaRef' <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR088: The $ref of a parameter must end with the suffix Param}}</span>
+      responses:
+        '200':
+          description: Lista de mascotas
+parameters:
+  idMascotaRef:
+    name: idMascota
+    in: query
+    required: true
+    type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+  swagger: '2.0'
+  info:
+    title: API de ejemplo
+    version: '1.0'
+  paths:
+    /mascotas:
+      get:
+        parameters:
+          - $ref: '#/parameters/idMascotaParam'
+        responses:
+          '200':
+            description: Lista de mascotas
+  parameters:
+    idMascotaparam:
+      name: idMascota
+      in: query
+      required: true
+      type: string
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: API de ejemplo
+    version: "1.0"
+  paths:
+    /mascotas:
+      get:
+        parameters:
+          - $ref: '#/components/parameters/idMascotaRef' <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR088: The $ref of a parameter must end with the suffix Param}}</span>
+        responses:
+          '200':
+            description: Lista de mascotas
+  components:
+    parameters:
+      idMascotaRef:
+        name: idMascota
+        in: query
+        required: true
+        schema:
+          type: string
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+  openapi: 3.0.0
+  info:
+    title: API de ejemplo
+    version: "1.0"
+  paths:
+    /mascotas:
+      get:
+        parameters:
+          - $ref: '#/components/parameters/idMascotaParam'
+        responses:
+          '200':
+            description: Lista de mascotas
+  components:
+    parameters:
+      idMascotaParam:
+        name: idMascota
+        in: query
+        required: true
+        schema:
+          type: string
+</pre> 

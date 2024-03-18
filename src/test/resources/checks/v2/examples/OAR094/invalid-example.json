@@ -1,0 +1,54 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API con Examples",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "summary": "Devuelve una lista de mascotas",
+        "responses": {
+          "200": {
+            "description": "Lista exitosa de mascotas",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "catExample": [
+                  {
+                    "name": "Whiskers",
+                    "animalType": "Cat"
+                  }
+                ],
+                "dogExample": [
+                  {
+                    "name": "Daisy",
+                    "animalType": "Dog"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Pet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "animalType": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

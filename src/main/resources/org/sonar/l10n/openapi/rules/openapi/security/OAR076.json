@@ -1,0 +1,13 @@
+{
+    "title": "OAR076 - NumericFormat - Numeric types requires a valid format",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MINOR"
+  }

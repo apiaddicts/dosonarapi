@@ -1,0 +1,35 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My API"
+  },
+  "paths": {
+    "/examples": {
+      "get": {
+        "summary": "Get a list of items",
+        "parameters": [
+          {
+            "name": "exampleParam1",
+            "in": "query",
+            "type": "string",
+            "format": "password" # Noncompliant {{OAR084: The format password should not pass through this querystring}}
+          },
+          {
+            "name": "param3",
+            "in": "query",
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of items",
+            "schema": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    }
+  }
+}

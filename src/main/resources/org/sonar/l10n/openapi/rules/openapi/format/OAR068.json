@@ -1,0 +1,13 @@
+{
+    "title": "OAR068 - PascalCaseNamingConvention - RequestBody and Responses schema property names must be compliant with the PascalCase naming convention",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "10min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/endpoint": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/successResponse"
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/errorResponse"
+            }
+          },
+          "default": {
+            "description": "Unknown"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "successResponse": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "type": "object",
+          "properties": {
+            "tipos": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "errorResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "integer", # Noncompliant {{OAR029: 'error' must be of type object}}
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "details": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "httpStatus": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "httpStatus"
+          ]
+        }
+      }
+    }
+  }
+}

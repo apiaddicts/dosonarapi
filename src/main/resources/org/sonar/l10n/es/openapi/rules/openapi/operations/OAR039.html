@@ -1,0 +1,109 @@
+<p>Se deben utilizar códigos de respuesta coherentes en cada operación.</p>
+<h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        default:
+          description: Default
+    post:
+      responses:
+        default:
+          description: Default
+</pre>
+<h2>Solución compatible (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Partial collection
+        400:
+          description: Bad request
+        500:
+          description: Internal server error
+        504:
+          description: Gateway timeout
+        default:
+          description: Default
+    post:
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad request
+        413:
+          description: Payload too large
+        415:
+          description: Unsupported media type
+        500:
+          description: Internal server error
+        504:
+          description: Gateway timeout
+        default:
+          description: Default
+</pre>
+<h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        default:
+          description: Default
+    post:
+      responses:
+        default:
+          description: Default
+</pre>
+<h2>Solución compatible (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        206:
+          description: Partial collection
+        400:
+          description: Bad request
+        500:
+          description: Internal server error
+        504:
+          description: Gateway timeout
+        default:
+          description: Default
+    post:
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad request
+        413:
+          description: Payload too large
+        415:
+          description: Unsupported media type
+        500:
+          description: Internal server error
+        504:
+          description: Gateway timeout
+        default:
+          description: Default
+</pre>

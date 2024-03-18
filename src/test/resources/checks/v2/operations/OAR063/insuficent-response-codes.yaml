@@ -1,0 +1,23 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /status:
+    put:
+      summary: Get API status
+      responses:
+        400:
+          description: error
+  /another:
+    put:
+      summary: Get another API status
+      responses:
+        400:
+          description: error
+  /users:
+    put:
+      summary: Get all users
+      responses:  # Noncompliant {{OAR063: Response code 200, 202, 204, 206 must be defined}}
+        400:
+          description: Error

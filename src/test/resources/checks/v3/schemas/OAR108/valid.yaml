@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Ejemplo de API Ampliada
+  version: 1.0.0
+paths:
+  /item:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  nombre:
+                    type: string
+                  activo:
+                    type: boolean
+                  configuracion:
+                    type: object
+                    properties:
+                      tema:
+                        type: string
+                      notificaciones:
+                        type: boolean
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  proyectoNull:
+                    type: string
+                    nullable: true
+                required:
+                  - id
+                  - nombre
+              example:
+                id: 123.0
+                nombre: Ejemplo
+                activo: false
+                configuracion:
+                  tema: Oscuro
+                  notificaciones: true
+                tags: ["api", "openapi"]
+                proyectoNull: null

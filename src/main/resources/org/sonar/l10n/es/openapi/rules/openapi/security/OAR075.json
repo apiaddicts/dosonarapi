@@ -1,0 +1,13 @@
+{
+    "title": "OAR075 - StringParameterIntegrityCheck - Los parámetros de tipo String deberían tener restricciones de minLength, maxLength, pattern (expresión regular) o enum",
+    "type": "VULNERABILITY",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "safety"
+    ],
+    "defaultSeverity": "MAJOR"
+}

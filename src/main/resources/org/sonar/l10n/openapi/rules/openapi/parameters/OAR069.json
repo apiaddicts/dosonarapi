@@ -1,0 +1,13 @@
+{
+    "title": "OAR069 - PathParamAndQuery -  Any param in PATH or QUERY, should have bad request (400) response",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "parameters"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

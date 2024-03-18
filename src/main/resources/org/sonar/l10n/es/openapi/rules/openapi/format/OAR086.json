@@ -1,0 +1,13 @@
+{
+    "title": "OAR086 - DescriptionFormatCheck - Las descripciones no pueden estar vacías, deben empezar con mayúsculas y terminar con un punto",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "30min"
+    },
+    "tags": [
+      "format"
+    ],
+    "defaultSeverity": "MINOR"
+  }

@@ -1,0 +1,131 @@
+<p>Defining the different responses that an operation returns conveys important information to the users of your API. It enables code-generating tools to create complete implementations of your specification, and documents your models to the developers.</p>
+<p>When you define a response, don't document just the status code. Also document the schema that goes with it, so that users of the API don't make guesses or bind their implementation to non-contractual fields.</p>
+<h2>Noncompliant Code Example (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        '200':
+          description: list correctly retrieved
+</pre>
+<h2>Compliant Solution (OpenAPI 2)</h2>
+<pre>
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: list correctly retrieved
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PetSchema'
+          examples:
+            'application/json':
+              [
+                {
+                   "name": "Fido",
+                   "kind": "Dog"
+                },
+                {
+                   "name": "Kitty",
+                   "kind": "Cat"
+                }
+              ]
+    post:
+      produces:
+        - 'application/json'
+      responses:
+        '201':
+          description: pet created
+          schema:
+            $ref: '#/definitions/PetSchema'
+
+definitions:
+  PetSchema:
+    type: object
+    properties:
+      name:
+        type: string
+      kind:
+        type: string
+        enum: [ Dog, Cat ]
+    example:
+      name: Fido
+      kind: Dog
+</pre>
+<h2>Noncompliant Code Example (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        '200':
+          description: list correctly retrieved
+</pre>
+<h2>Compliant Solution (OpenAPI 3)</h2>
+<pre>
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+paths:
+  /pets:
+    get:
+      responses:
+        '200':
+          description: list correctly retrieved
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PetSchema'
+              example:
+                [
+                  {
+                     "name": "Fido",
+                     "kind": "Dog"
+                  },
+                  {
+                     "name": "Kitty",
+                     "kind": "Cat"
+                  }
+                ]
+    post:
+      responses:
+        '201':
+          description: pet created
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/PetSchema'
+components:
+  schemas:
+    PetSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        kind:
+          type: string
+          enum: [ Dog, Cat ]
+      example:
+        name: Fido
+        kind: Dog
+</pre>

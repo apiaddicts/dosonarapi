@@ -1,0 +1,13 @@
+{
+    "title": "OAR071 - GetQueryParamsDefined - Query parameters in GET operations must be defined according to the standard",
+    "type": "BUG",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "15min"
+    },
+    "tags": [
+      "operations"
+    ],
+    "defaultSeverity": "MAJOR"
+  }

@@ -1,41 +1,5 @@
 <p>Está prohibido el uso de mecanismos de sesión con estado. Esto puede causar problemas para escalar las aplicaciones.</p>
 <h2>Ejemplo de código no compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "header", 
-                        "name": "Cookie", 
-                        "type": "string", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok", 
-                        "headers": {
-                            "Set-Cookie": {
-                                "type": "string", 
-                                "description": "session"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -58,36 +22,6 @@ paths:
               description: session
 </pre>
 <h2>Solución compatible (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "in": "header", 
-                        "name": "X-Authorization-Key", 
-                        "type": "string", 
-                        "required": true
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -106,46 +40,6 @@ paths:
           description: Ok
 </pre>
 <h2>Ejemplo de código no compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "Cookie", 
-                        "in": "header", 
-                        "required": true, 
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok", 
-                        "headers": {
-                            "Set-Cookie": {
-                                "description": "session", 
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:
@@ -170,38 +64,6 @@ paths:
                 type: string
 </pre>
 <h2>Solución compatible (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.1", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "X-Authorization-Key", 
-                        "in": "header", 
-                        "required": true, 
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ], 
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.1
 info:

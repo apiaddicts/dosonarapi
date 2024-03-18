@@ -1,0 +1,23 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API de Ejemplo",
+      "version": "1.0.0",
+      "description": "Esta es una API de ejemplo.",
+      "termsOfService": "http://ejemplo.com/terminos/",
+      "contact": {
+        "name": "Soporte de API",
+        "url": "http://ejemplo.com/contacto",
+        "email": "contacto@ejemplo.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "api.ejemplo.com",
+    "schemes": [
+      "https"
+    ],
+    "paths": {}
+  }

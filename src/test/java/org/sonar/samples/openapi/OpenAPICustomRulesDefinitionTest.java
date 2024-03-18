@@ -3,7 +3,10 @@ package org.sonar.samples.openapi;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinition.Repository;
-import org.sonar.samples.openapi.checks.RulesLists;
+
+import apiquality.sonar.openapi.I18nContext;
+import apiquality.sonar.openapi.OpenAPICustomRulesDefinition;
+import apiquality.sonar.openapi.checks.RulesLists;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

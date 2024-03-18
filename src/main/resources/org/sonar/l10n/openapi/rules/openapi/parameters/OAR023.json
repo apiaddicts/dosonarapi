@@ -1,5 +1,5 @@
 {
-  "title": "OAR023 - TotalParameter - $total must be defined as a parameter in this operation",
+  "title": "OAR023 - TotalParameter - the chosen parameter must be defined in this operation",
   "type": "BUG",
   "status": "ready",
   "remediation": {

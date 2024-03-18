@@ -1,38 +1,13 @@
 <p>When defining an API, the response data formats must be defined.</p>
 <p>According to the standard, the default format will be application/json, with some exceptions.</p>
 <h2>Noncompliant Code Example (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "produces": [
-        "application/xml"
-    ], 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
   title: Swagger Petstore
   version: "1.0"
-produces:
-  - application/xml
+produces: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR010: Should indicate the default response media type}}</span>
+  - application/xml 
 paths:
   /pets:
     put:
@@ -41,31 +16,6 @@ paths:
           description: Ok
 </pre>
 <h2>Compliant Solution (OpenAPI 2)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "swagger": "2.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "produces": [
-        "application/json"
-    ], 
-    "paths": {
-        "/pets": {
-            "put": {
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 swagger: "2.0"
 info:
@@ -81,35 +31,6 @@ paths:
           description: Ok
 </pre>
 <h2>Noncompliant Code Example (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Ok", 
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:
@@ -121,41 +42,12 @@ paths:
       responses:
         200:
           description: Ok
-          content:
+          content: <span class="error-info" style="color: #FD8E18;"># Noncompliant {{OAR010: Should indicate the default response media type}}</span>
             application/xml:
               schema:
                 type: object
 </pre>
 <h2>Compliant Solution (OpenAPI 3)</h2>
-<h3>JSON</h3>
-<pre>
-{
-    "openapi": "3.0.0", 
-    "info": {
-        "title": "Swagger Petstore", 
-        "version": "1.0"
-    }, 
-    "paths": {
-        "/pets": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Ok", 
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-</pre>
-<h3>YAML</h3>
 <pre>
 openapi: 3.0.0
 info:

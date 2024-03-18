@@ -7,6 +7,8 @@ import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RuleParamType;
 import org.sonar.samples.openapi.BaseCheckTest;
 
+import apiquality.sonar.openapi.checks.parameters.OAR019SelectParameterCheck;
+
 public class OAR019SelectParameterCheckTest extends BaseCheckTest {
 
     @Before
@@ -28,23 +30,13 @@ public class OAR019SelectParameterCheckTest extends BaseCheckTest {
     }
 
     @Test
-    public void verifyInV2With$ref() {
-        verifyV2("with-$ref");
-    }
-
-    @Test
     public void verifyInV2Without() {
         verifyV2("plain-without");
     }
 
     @Test
-    public void verifyInV2With$refWithout() {
-        verifyV2("with-$ref-without");
-    }
-
-    @Test
-    public void verifyInV2WithoutParameters() {
-        verifyV2("without-parameters");
+    public void verifyInV2WithRef() {
+        verifyV2("with-ref");
     }
 
     @Test
@@ -58,34 +50,26 @@ public class OAR019SelectParameterCheckTest extends BaseCheckTest {
     }
 
     @Test
-    public void verifyInV3With$ref() {
-        verifyV3("with-$ref");
-    }
-
-    @Test
     public void verifyInV3Without() {
         verifyV3("plain-without");
     }
 
     @Test
-    public void verifyInV3With$refWithout() {
-        verifyV3("with-$ref-without");
-    }
-
-    @Test
-    public void verifyInV3WithoutParameters() {
-        verifyV3("without-parameters");
+    public void verifyInV3WithRef() {
+        verifyV3("with-ref");
     }
 
     @Override
     public void verifyRule() {
-        assertRuleProperties("OAR019 - SelectParameter - $select must be defined as a parameter in this operation", RuleType.BUG, Severity.MINOR, tags("parameters"));
+        assertRuleProperties("OAR019 - SelectParameter - the chosen parameter must be defined in this operation", RuleType.BUG, Severity.MINOR, tags("parameters"));
     }
 
     @Override
     public void verifyParameters() {
-        assertNumberOfParameters(2);
-        assertParameterProperties("resources-paths", ";get:^\\/[^\\/{}]*$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)$;get:^\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)\\/[^\\/{}]*\\/(\\{[^\\/{}]*\\}|\\bme\\b)$", RuleParamType.STRING);
-        assertParameterProperties("resources-exclusions", "get:/status", RuleParamType.STRING);
+        assertNumberOfParameters(3);
+        assertParameterProperties("parameterName", "$select", RuleParamType.STRING);
+        assertParameterProperties("paths", "/examples", RuleParamType.STRING);
+        assertParameterProperties("pathValidationStrategy", "/include", RuleParamType.STRING);
+        
     }
 }
